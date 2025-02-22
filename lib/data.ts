@@ -1,0 +1,233 @@
+// Mock data for different vehicle categories
+export const vehicleData = {
+  Electric: [
+    {
+      id: 1,
+      name: "Tesla Model 3",
+      image: "/placeholder.svg",
+      href: "/shop/tesla-model-3",
+    },
+    {
+      id: 2,
+      name: "Tesla Model S",
+      image: "/placeholder.svg",
+      href: "/shop/tesla-model-s",
+    },
+    {
+      id: 3,
+      name: "Nissan Leaf",
+      image: "/placeholder.svg",
+      href: "/shop/nissan-leaf",
+    },
+    {
+      id: 4,
+      name: "Tesla Model Y",
+      image: "/placeholder.svg",
+      href: "/shop/tesla-model-y",
+    },
+    {
+      id: 5,
+      name: "Ford Mustang Mach-E",
+      image: "/placeholder.svg",
+      href: "/shop/ford-mustang-mach-e",
+    },
+    {
+      id: 6,
+      name: "Ford F-150 Lightning",
+      image: "/placeholder.svg",
+      href: "/shop/ford-f150-lightning",
+    },
+    {
+      id: 7,
+      name: "BMW i3",
+      image: "/placeholder.svg",
+      href: "/shop/bmw-i3",
+    },
+    {
+      id: 8,
+      name: "Volkswagen ID.4",
+      image: "/placeholder.svg",
+      href: "/shop/volkswagen-id4",
+    },
+    {
+      id: 9,
+      name: "What to know before purchasing an EV",
+      image: "/placeholder.svg",
+      href: "/ev101",
+      isGuide: true,
+    },
+  ],
+  SUV: [
+    {
+      id: 1,
+      name: "Toyota RAV4",
+      image: "/placeholder.svg",
+      href: "/shop/toyota-rav4",
+    },
+    {
+      id: 2,
+      name: "Honda CR-V",
+      image: "/placeholder.svg",
+      href: "/shop/honda-cr-v",
+    },
+    {
+      id: 3,
+      name: "Ford Explorer",
+      image: "/placeholder.svg",
+      href: "/shop/ford-explorer",
+    },
+    {
+      id: 4,
+      name: "Jeep Grand Cherokee",
+      image: "/placeholder.svg",
+      href: "/shop/jeep-grand-cherokee",
+    },
+    {
+      id: 5,
+      name: "Hyundai Tucson",
+      image: "/placeholder.svg",
+      href: "/shop/hyundai-tucson",
+    },
+    {
+      id: 6,
+      name: "Kia Telluride",
+      image: "/placeholder.svg",
+      href: "/shop/kia-telluride",
+    },
+    {
+      id: 7,
+      name: "Mazda CX-5",
+      image: "/placeholder.svg",
+      href: "/shop/mazda-cx-5",
+    },
+    {
+      id: 8,
+      name: "Subaru Forester",
+      image: "/placeholder.svg",
+      href: "/shop/subaru-forester",
+    },
+    {
+      id: 9,
+      name: "SUV Buying Guide",
+      image: "/placeholder.svg",
+      href: "/suv-guide",
+      isGuide: true,
+    },
+  ],
+  Sedan: [
+    {
+      id: 1,
+      name: "Toyota Camry",
+      image: "/placeholder.svg",
+      href: "/shop/toyota-camry",
+    },
+    {
+      id: 2,
+      name: "Honda Accord",
+      image: "/placeholder.svg",
+      href: "/shop/honda-accord",
+    },
+    {
+      id: 3,
+      name: "BMW 3 Series",
+      image: "/placeholder.svg",
+      href: "/shop/bmw-3-series",
+    },
+    {
+      id: 4,
+      name: "Mercedes-Benz C-Class",
+      image: "/placeholder.svg",
+      href: "/shop/mercedes-c-class",
+    },
+    {
+      id: 5,
+      name: "Lexus ES",
+      image: "/placeholder.svg",
+      href: "/shop/lexus-es",
+    },
+    {
+      id: 6,
+      name: "Hyundai Sonata",
+      image: "/placeholder.svg",
+      href: "/shop/hyundai-sonata",
+    },
+    {
+      id: 7,
+      name: "Kia K5",
+      image: "/placeholder.svg",
+      href: "/shop/kia-k5",
+    },
+    {
+      id: 8,
+      name: "Nissan Altima",
+      image: "/placeholder.svg",
+      href: "/shop/nissan-altima",
+    },
+    {
+      id: 9,
+      name: "Sedan Buying Guide",
+      image: "/placeholder.svg",
+      href: "/sedan-guide",
+      isGuide: true,
+    },
+  ],
+  "Pickup Truck": [
+    {
+      id: 1,
+      name: "Ford F-150",
+      image: "/placeholder.svg",
+      href: "/shop/ford-f150",
+    },
+    {
+      id: 2,
+      name: "Chevrolet Silverado",
+      image: "/placeholder.svg",
+      href: "/shop/chevrolet-silverado",
+    },
+    {
+      id: 3,
+      name: "RAM 1500",
+      image: "/placeholder.svg",
+      href: "/shop/ram-1500",
+    },
+    {
+      id: 4,
+      name: "Toyota Tundra",
+      image: "/placeholder.svg",
+      href: "/shop/toyota-tundra",
+    },
+    {
+      id: 5,
+      name: "GMC Sierra",
+      image: "/placeholder.svg",
+      href: "/shop/gmc-sierra",
+    },
+    {
+      id: 6,
+      name: "Nissan Titan",
+      image: "/placeholder.svg",
+      href: "/shop/nissan-titan",
+    },
+    {
+      id: 7,
+      name: "Honda Ridgeline",
+      image: "/placeholder.svg",
+      href: "/shop/honda-ridgeline",
+    },
+    {
+      id: 8,
+      name: "Toyota Tacoma",
+      image: "/placeholder.svg",
+      href: "/shop/toyota-tacoma",
+    },
+    {
+      id: 9,
+      name: "Truck Buying Guide",
+      image: "/placeholder.svg",
+      href: "/truck-guide",
+      isGuide: true,
+    },
+  ],
+} as const;
+
+export type VehicleCategory = keyof typeof vehicleData;
