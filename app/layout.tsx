@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navigation/navbar";
+import Navbar from "@/components/layout/navigation/navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
