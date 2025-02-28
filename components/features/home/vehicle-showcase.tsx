@@ -7,10 +7,7 @@ interface VehicleShowcaseProps {
   className?: string;
 }
 
-export default function VehicleShowcase({
-  category,
-  className,
-}: VehicleShowcaseProps) {
+export default function VehicleShowcase({ category }: VehicleShowcaseProps) {
   const vehicles = vehicleData[category] || [];
 
   return (

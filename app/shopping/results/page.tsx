@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { SearchResults } from "@/components/features/search/search-results";
-import { FilterPanel } from "@/components/features/search/filter-panel";
-import { LocationFilter } from "@/components/features/search/location-filter";
+import { SearchResults } from "@/components/features/search-results/search-results";
+import { FilterPanel } from "@/components/features/search-results/filter-panel";
+import { LocationFilter } from "@/components/features/search-results/location-filter";
 import { Pagination } from "@/components/ui/pagnination";
 import Footer from "@/components/layout/footer";
 

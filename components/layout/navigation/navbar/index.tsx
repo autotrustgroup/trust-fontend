@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           <Link
-            href="/cars-for-sale"
+            href="/used-cars"
             className="text-sm font-semibold text-foreground hover:text-primary"
           >
             Used Cars
@@ -52,7 +52,7 @@ export default function Navbar() {
             Sell Your Car
           </Link>
           <Link
-            href="/financing"
+            href="/finance"
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             Financing
