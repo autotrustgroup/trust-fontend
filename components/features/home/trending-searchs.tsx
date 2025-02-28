@@ -3,106 +3,37 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const trendingSearches = [
-  "Used Under $15K",
-  "Used Electric",
-  "Used Truck",
-  "Used SUV Under $15K",
-  "Used Mercedes-Benz",
-  "Used Porsche 911",
-  "Lincoln Nautilus Under $60K",
-] as const;
-
-const trendingVehicles = [
-  {
-    id: 1,
-    name: "Used Nissan Altima",
-    price: 10974,
-    mileage: "93,227",
-    image: "/placeholder.svg",
-    href: "/vehicle/nissan-altima-1",
-  },
-  {
-    id: 2,
-    name: "Used Jeep Grand Cherokee",
-    price: 13692,
-    mileage: "104,428",
-    image: "/placeholder.svg",
-    href: "/vehicle/jeep-grand-cherokee-1",
-  },
-  {
-    id: 3,
-    name: "Used Cadillac ATS",
-    price: 9949,
-    mileage: "68,554",
-    image: "/placeholder.svg",
-    href: "/vehicle/cadillac-ats-1",
-  },
-  {
-    id: 4,
-    name: "Used Jeep New Compass",
-    price: 12989,
-    mileage: "100,392",
-    image: "/placeholder.svg",
-    href: "/vehicle/jeep-compass-1",
-  },
-  {
-    id: 5,
-    name: "Used Mazda CX-7",
-    price: 8990,
-    mileage: "57,412",
-    image: "/placeholder.svg",
-    href: "/vehicle/mazda-cx7-1",
-  },
-  {
-    id: 6,
-    name: "Used Nissan Altima",
-    price: 13949,
-    mileage: "88,472",
-    image: "/placeholder.svg",
-    href: "/vehicle/nissan-altima-2",
-  },
-  {
-    id: 7,
-    name: "Used Scion xD",
-    price: 8977,
-    mileage: "81,268",
-    image: "/placeholder.svg",
-    href: "/vehicle/scion-xd-1",
-  },
-  {
-    id: 8,
-    name: "Used Toyota Yaris iA",
-    price: 14995,
-    mileage: "50,790",
-    image: "/placeholder.svg",
-    href: "/vehicle/toyota-yaris-1",
-  },
-  {
-    id: 9,
-    name: "Used Nissan Altima",
-    price: 14949,
-    mileage: "98,579",
-    image: "/placeholder.svg",
-    href: "/vehicle/nissan-altima-3",
-  },
-  {
-    id: 10,
-    name: "Used Honda Crosstour",
-    price: 8468,
-    mileage: "194,459",
-    image: "/placeholder.svg",
-    href: "/vehicle/honda-crosstour-1",
-  },
-];
+import { vehicleService } from "@/lib/data/api/vehicle-service";
+import { trendingSearchTerms } from "@/lib/data/mock/search-terms";
+import { Vehicle } from "@/types/vehicle";
 
 export default function TrendingSearches() {
   const [selectedSearch, setSelectedSearch] =
     React.useState<string>("Used Under $15K");
+  const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // Fetch vehicles when selected search changes
+  React.useEffect(() => {
+    const fetchVehicles = async () => {
+      setIsLoading(true);
+      try {
+        const results = await vehicleService.searchVehiclesByTerm(
+          selectedSearch
+        );
+        setVehicles(results);
+      } catch (error) {
+        console.error("Error fetching vehicles:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchVehicles();
+  }, [selectedSearch]);
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
@@ -114,26 +45,25 @@ export default function TrendingSearches() {
   };
 
   return (
-    <section className="space-y-6">
-      <h2 className="text-2xl font-bold">Trending searches near you</h2>
-
+    <div className="w-full">
       {/* Search Categories */}
-      <div className="relative">
+      <div className="relative mb-8">
         <div
           ref={scrollContainerRef}
           className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mb-4"
         >
-          {trendingSearches.map((search) => (
+          {trendingSearchTerms.map((search) => (
             <button
               key={search}
               onClick={() => setSelectedSearch(search)}
               className={cn(
-                "h-9 px-4 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
+                "h-10 px-5 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center",
                 selectedSearch === search
-                  ? "bg-black text-white"
-                  : "bg-[#F3F3F3] text-gray-900 hover:bg-gray-200"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
+                  : "bg-white border border-gray-200 text-gray-800 hover:bg-gray-100"
               )}
             >
+              {selectedSearch === search && <Search className="w-4 h-4 mr-2" />}
               {search}
             </button>
           ))}
@@ -143,7 +73,7 @@ export default function TrendingSearches() {
         <div className="absolute right-0 top-0 hidden h-full md:flex items-center">
           <button
             onClick={scrollRight}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white shadow-md hover:bg-gray-900"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-gray-200 text-gray-700 shadow-sm hover:bg-gray-100"
             aria-label="Scroll right"
           >
             <ChevronRight className="h-5 w-5" />
@@ -151,36 +81,86 @@ export default function TrendingSearches() {
         </div>
       </div>
 
-      {/* Vehicle Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-        {trendingVehicles.map((vehicle) => (
-          <Link key={vehicle.id} href={vehicle.href} className="group block">
-            <div className="aspect-[4/3] relative mb-3 bg-gray-100 rounded-lg overflow-hidden">
-              <Image
-                src={vehicle.image || "/placeholder.svg"}
-                alt={vehicle.name}
-                fill
-                className="object-cover transition-transform group-hover:scale-105"
-              />
-            </div>
-            <h3 className="font-medium mb-1">{vehicle.name}</h3>
-            <p className="text-lg font-bold">
-              ${vehicle.price.toLocaleString()}
-            </p>
-            <p className="text-sm text-gray-600">{vehicle.mileage} mi.</p>
-          </Link>
-        ))}
-      </div>
+      {/* Results count */}
+      <p className="text-sm text-gray-600 mb-4">
+        Showing {vehicles.length} {vehicles.length === 1 ? "result" : "results"}{" "}
+        for "{selectedSearch}"
+      </p>
 
-      {/* Footer Link */}
-      <div>
-        <Link
-          href="/used-under-15k"
-          className="text-black font-medium hover:underline"
-        >
-          See more Used Under $15K
-        </Link>
-      </div>
-    </section>
+      {/* Loading state */}
+      {isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg overflow-hidden shadow-sm animate-pulse"
+            >
+              <div className="aspect-[4/3] bg-gray-200"></div>
+              <div className="p-4">
+                <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                <div className="h-6 bg-gray-200 rounded mb-2 w-1/2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          {/* Vehicle Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {vehicles.length > 0 ? (
+              vehicles.map((vehicle) => (
+                <Link
+                  key={vehicle.id}
+                  href={`/vehicledetail/${vehicle.id}`}
+                  className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                >
+                  <div className="aspect-[4/3] relative bg-gray-100 overflow-hidden">
+                    <Image
+                      src={vehicle.image || "/placeholder.svg"}
+                      alt={vehicle.name}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
+                      {vehicle.name}
+                    </h3>
+                    <p className="text-lg font-bold text-indigo-700">
+                      ${vehicle.price.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {vehicle.mileage} mi.
+                    </p>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-500">
+                  No vehicles found matching "{selectedSearch}"
+                </p>
+                <p className="text-sm text-gray-400 mt-2">
+                  Try another search term
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Footer Link */}
+          {vehicles.length > 0 && (
+            <div className="mt-8 text-center">
+              <Link
+                href={`/search?q=${encodeURIComponent(selectedSearch)}`}
+                className="inline-flex items-center justify-center h-12 px-6 font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-md hover:opacity-90 transition-opacity"
+              >
+                See more {selectedSearch}
+              </Link>
+            </div>
+          )}
+        </>
+      )}
+    </div>
   );
 }

@@ -24,89 +24,6 @@ interface SimilarVehicle {
   isHotCar?: boolean;
 }
 
-const similarVehicles: SimilarVehicle[] = [
-  {
-    id: "1",
-    condition: "Used",
-    year: 2021,
-    make: "Tesla",
-    model: "Model 3",
-    trim: "Standard Range Plus",
-    price: 24000,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202025-02-25%20at%2018.25.18-G6oWKGixvaJ3uyRFDnOscrlJ8GsLmK.png",
-    mileage: 24368,
-    deal: {
-      type: "Good Deal",
-      underAmount: 163,
-    },
-    evBattery: {
-      rating: "Excellent",
-    },
-    isHotCar: true,
-  },
-  {
-    id: "2",
-    condition: "Used",
-    year: 2022,
-    make: "Audi",
-    model: "e-tron",
-    trim: "Premium",
-    price: 29200,
-    priceDropAmount: 200,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202025-02-25%20at%2018.25.18-G6oWKGixvaJ3uyRFDnOscrlJ8GsLmK.png",
-    mileage: 33424,
-    deal: {
-      type: "Good Deal",
-      underAmount: 0,
-    },
-    evBattery: {
-      rating: "Outstanding",
-    },
-    isHotCar: true,
-  },
-  {
-    id: "3",
-    condition: "Used",
-    year: 2020,
-    make: "Chevrolet",
-    model: "Bolt EV",
-    trim: "Premier",
-    price: 15900,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202025-02-25%20at%2018.25.18-G6oWKGixvaJ3uyRFDnOscrlJ8GsLmK.png",
-    mileage: 28226,
-    deal: {
-      type: "Great Deal",
-      underAmount: 623,
-    },
-    evBattery: {
-      rating: "Excellent",
-    },
-  },
-  {
-    id: "4",
-    condition: "Used",
-    year: 2018,
-    make: "Chevrolet",
-    model: "Volt",
-    trim: "Premier",
-    price: 15700,
-    priceDropAmount: 100,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202025-02-25%20at%2018.25.18-G6oWKGixvaJ3uyRFDnOscrlJ8GsLmK.png",
-    mileage: 69199,
-    deal: {
-      type: "Great Deal",
-      underAmount: 373,
-    },
-    evBattery: {
-      rating: "Good",
-    },
-  },
-];
-
 function CarCard({ vehicle }: { vehicle: SimilarVehicle }) {
   return (
     <Link
@@ -186,7 +103,7 @@ function CarCard({ vehicle }: { vehicle: SimilarVehicle }) {
   );
 }
 
-export function SimilarVehicles() {
+export function SimilarVehicles({ vehicles }: { vehicles: SimilarVehicle[] }) {
   return (
     <div className="bg-white p-6 border border-gray-100 rounded-lg shadow-md">
       <h2 className="text-[28px] font-bold mb-6">
@@ -194,7 +111,7 @@ export function SimilarVehicles() {
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        {similarVehicles.map((vehicle) => (
+        {vehicles.map((vehicle) => (
           <CarCard key={vehicle.id} vehicle={vehicle} />
         ))}
       </div>

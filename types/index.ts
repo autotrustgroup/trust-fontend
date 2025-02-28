@@ -5,3 +5,5 @@ export type SortOption =
   | "year-asc"
   | "mileage-asc"
   | "mileage-desc";
+
+export * from "./vehicle";

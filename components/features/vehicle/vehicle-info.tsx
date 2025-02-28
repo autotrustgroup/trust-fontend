@@ -73,7 +73,7 @@ export function VehicleInfo({ data, onCheckAvailability }: VehicleInfoProps) {
       </div>
 
       {/* Actions */}
-      <div className="space-y-3">
+      {/* <div className="space-y-3">
         <Button
           onClick={onCheckAvailability}
           className="w-full bg-[#8B45F7] hover:bg-[#7B3BE3] text-white"
@@ -83,15 +83,15 @@ export function VehicleInfo({ data, onCheckAvailability }: VehicleInfoProps) {
         <Button variant="outline" className="w-full">
           Get pre-qualified
         </Button>
-      </div>
+      </div> */}
 
       {/* Additional Info */}
-      <p className="mt-4 text-xs text-gray-500">
+      {/* <p className="mt-4 text-xs text-gray-500">
         By clicking "Check Availability," you authorize BMW Seattle and its
         affiliates to contact you by texts/calls which may include marketing and
         be by autodialer. Consent is not required to purchase. Msg/data rates
         may apply.
-      </p>
+      </p> */}
     </div>
   );
 }

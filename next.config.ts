@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     domains: [
       "hebbkx1anhila5yf.public.blob.vercel-storage.com",
       "picsum.photos",
+      "images.unsplash.com",
+      "images.pexels.com",
+      "play.google.com",
     ],
   },
 };

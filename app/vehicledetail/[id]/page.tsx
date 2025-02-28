@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageGallery } from "@/components/features/vehicle/image-gallery";
 import { VehicleInfo } from "@/components/features/vehicle/vehicle-info";
 import { DealGauge } from "@/components/features/vehicle/deal-gauge";
@@ -15,256 +15,383 @@ import { PrequalifiedSection } from "@/components/features/vehicle/prequalified-
 import { ConsumerReviews } from "@/components/features/vehicle/consumer-reviews";
 import { QuestionSection } from "@/components/features/vehicle/questions-section";
 import { RecentReviews } from "@/components/features/vehicle/recent-reviews";
-import { mockReviews } from "@/lib/mock-reviews";
-import Footer from "@/components/layout/footer";
 import { PaymentCalculator } from "@/components/features/vehicle/payment-calculator";
-import { mockPriceHistory } from "@/lib/price-history-mock";
-
-// Mock data - replace with actual data fetching
-// interface VehicleData {
-//     id: string;
-//     title: string;
-//     price: number;
-//     images: string[];
-//     dealer: {
-//         name: string;
-//         rating: number;
-//         reviews: number;
-//         location: string;
-//         address: string;
-//         phone: string;
-//     };
-//     specs: {
-//         exteriorColor: string;
-//         interiorColor: string;
-//         mileage: string;
-//         transmission: string;
-//         drivetrain: string;
-//         engine: string;
-//         vin: string;
-//         stock: string;
-//         mpg: {
-//             city: number;
-//             highway: number;
-//         };
-//     };
-//     features: {
-//         convenience: string[];
-//         safety: string[];
-//         entertainment: string[];
-//         exterior: string[];
-//     };
-//     priceHistory: {
-//         date: string;
-//         price: number;
-//     }[];
-//     dealGauge: {
-//         rating: string;
-//         marketComparison: number;
-//         marketRange: {
-//             min: number;
-//             max: number;
-//             average: number;
-//         };
-//     };
-//     history: {
-//         accidents: number;
-//         owners: number;
-//         serviceRecords: boolean;
-//         rentalUse: boolean;
-//         lastReported: string;
-//     };
-// }
-
-const vehicleData = {
-  id: "6aba792c-4246-49b7-99d6-ebdeca86b1a1",
-  title: "2023 Audi S8 Prestige TFSI quattro Tiptronic",
-  price: 47888,
-  images: [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-VehicleDetailsPage-yTU9SLP9ZF4j9mgCQZViYeiRLJMdXO.png",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-  ],
-  dealer: {
-    name: "BMW Seattle",
-    rating: 4.9,
-    reviews: 2603,
-    location: "Seattle, WA",
-    address: "1002 Airport Way S, Seattle, WA 98134",
-    phone: "(206) 328-8787",
-  },
-  vehicle: {
-    year: 2023,
-    make: "Audi",
-    model: "S8",
-    notes: "Prestige TFSI quattro Tiptronic",
-    trim: "Prestige TFSI quattro Tiptronic",
-    body: "Sedan",
-    condition: "Used",
-    mileage: 10234,
-    vin: "WAAFD8PN123456",
-    stock: "P123456",
-    price: 47888,
-    exteriorColor: "Gray",
-    interiorColor: "Black",
-    transmission: "Automatic",
-    drivetrain: "AWD",
-    engine: "4.0L V8 gasoline direct injection TFSI",
-  },
-  specs: {
-    exteriorColor: "Gray",
-    interiorColor: "Black",
-    mileage: "10,234",
-    transmission: "Automatic",
-    drivetrain: "AWD",
-    engine: "4.0L V8 gasoline direct injection TFSI",
-    vin: "WAUW2AFD8PN123456",
-    stock: "P123456",
-    mpg: {
-      city: 15,
-      highway: 23,
-    },
-  },
-  featuress: {
-    convenience: [
-      "Adaptive Cruise Control",
-      "Remote Start",
-      "Keyless Entry",
-      "Push Button Start",
-    ],
-    safety: [
-      "Lane Departure Warning",
-      "Forward Collision Warning",
-      "Blind Spot Monitor",
-      "360-degree Camera",
-    ],
-    entertainment: [
-      "Premium Sound System",
-      "Apple CarPlay",
-      "Android Auto",
-      "Navigation System",
-    ],
-    exterior: [
-      "LED Headlights",
-      "Panoramic Sunroof",
-      "Power Folding Mirrors",
-      '20" Alloy Wheels',
-    ],
-  },
-  priceHistory: [
-    { date: "2024-01-01", price: 49888 },
-    { date: "2024-01-15", price: 48888 },
-    { date: "2024-02-01", price: 47888 },
-  ],
-  dealGauge: {
-    rating: "Great Deal",
-    marketComparison: -3200, // Amount below market average
-    marketRange: {
-      min: 45000,
-      max: 52000,
-      average: 51088,
-    },
-  },
-  history: {
-    accidents: 0,
-    owners: 1,
-    serviceRecords: true,
-    rentalUse: false,
-    lastReported: "2024-01-15",
-  },
-  features: {
-    convenience: ["Keyless Start"],
-    entertainment: ["Apple CarPlay®/Android Auto®", "Bluetooth®", "USB Port"],
-    safety: [
-      "Automatic Emergency Braking",
-      "Backup Camera",
-      "Blind Spot Monitor",
-      "Brake Assist",
-      "Lane Departure Warning",
-      "Rear Cross Traffic Alert",
-      "Stability Control",
-    ],
-    additional: [
-      "headlight control - auto highbeam",
-      "keyless entry",
-      "apple carplay/android auto",
-      "collision warning system",
-      "parking distance sensors",
-      "parking assistance",
-    ],
-  },
-};
-
-// Add mock data for consumer reviews
-const consumerReviewsData = {
-  year: 2022,
-  make: "Nissan",
-  model: "Leaf",
-  overallRating: 3.8,
-  totalReviews: 5,
-  recommendationRate: 80,
-  ratings: [
-    { label: "Comfort", score: 3.4 },
-    { label: "Interior", score: 3.4 },
-    { label: "Performance", score: 3.8 },
-    { label: "Value", score: 4.2 },
-    { label: "Exterior", score: 3.4 },
-    { label: "Reliability", score: 4.2 },
-  ],
-};
-
-// Add mock data for deal gauge
-const dealGaugeData = {
-  price: 25900,
-  comparisonModel: "Tesla Model 3",
-  comparisonYear: 2022,
-  marketRange: {
-    min: 23900,
-    current: 25900,
-    max: 28500,
-    average: 25400,
-  },
-};
+import Footer from "@/components/layout/footer";
+import Link from "next/link";
+import { vehicleService } from "@/lib/data/api/vehicle-service";
+import {
+  getPriceHistoryData,
+  getVehicleReviews,
+} from "@/lib/data/services/vehicle-detail-service";
+import { VehicleDetailData } from "@/lib/data/mock/vehicle-detail";
+import { useParams } from "next/navigation";
 
 export default function VehicleDetailsPage() {
   const [showCheckAvailability, setShowCheckAvailability] = useState(false);
   const [showPrequalified, setShowPrequalified] = useState(false);
+  const params = useParams();
+  const id = params?.id as string;
+
+  // States for all vehicle data
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [vehicleData, setVehicleData] = useState<any>(null);
+  const [similarVehicles, setSimilarVehicles] = useState<any[]>([]);
+
+  // Fetch vehicle data
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!id) return;
+
+      setIsLoading(true);
+      try {
+        // Get transformed vehicle data
+        const data = await vehicleService.getTransformedVehicleData(id);
+        if (!data) {
+          throw new Error("Vehicle not found");
+        }
+
+        // Enhance vehicleInfoData with real car images
+        if (data.vehicleInfoData) {
+          // Replace any placeholder images with high-quality car images from Unsplash
+          data.vehicleInfoData.images = [
+            "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80", // Main car image
+            "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80", // Interior
+            "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80", // Side view
+            "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80", // Front angle
+            "https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80", // Rear view
+          ];
+        }
+
+        setVehicleData(data);
+
+        // Get similar vehicles
+        const similar = await vehicleService.getSimilarVehicles(id);
+        setSimilarVehicles(similar);
+      } catch (err) {
+        console.error("Error fetching vehicle data:", err);
+        setError("Failed to load vehicle data. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  // Handle contact functionality
   const handleContactClick = () => {
-    // Add contact functionality here
     console.log("Contact seller clicked");
   };
 
-  return (
-    <div className="min-h-screen bg-[#F3F3F3]">
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid lg:grid-cols-2 gap-6">
-          {/* Left Column - Images and Details */}
-          <div className="space-y-6">
-            <ImageGallery images={vehicleData.images} />
-            <DealGauge {...dealGaugeData} />
-            <BasicInfo specs={vehicleData.specs} />
-            <Features features={vehicleData.features} />
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="w-full py-8 px-4 sm:px-6 md:py-12 bg-white">
+        <div className="container mx-auto max-w-screen-xl text-center py-20">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-6"></div>
+            <div className="h-64 bg-gray-200 rounded mb-6"></div>
+            <div className="h-40 bg-gray-200 rounded mb-6"></div>
+            <div className="h-40 bg-gray-200 rounded"></div>
+          </div>
+          <p className="mt-6 text-gray-500">Loading vehicle details...</p>
+        </div>
+      </div>
+    );
+  }
 
-            <VehicleHistory history={vehicleData.history} />
-            <SellerInfo
-              dealer={vehicleData.dealer}
-              vehicle={vehicleData.vehicle}
-            />
-            <QuestionSection onContactClick={handleContactClick} />
-            <ConsumerReviews {...consumerReviewsData} />
-            <RecentReviews reviews={mockReviews} />
+  // Show error state
+  if (error) {
+    return (
+      <div className="w-full py-8 px-4 sm:px-6 md:py-12 bg-white">
+        <div className="container mx-auto max-w-screen-xl text-center py-20">
+          <div className="text-red-500 text-xl mb-4">Error</div>
+          <p>{error}</p>
+          <Link
+            href="/search"
+            className="mt-6 inline-block text-indigo-600 hover:text-blue-700 hover:underline transition-colors duration-200"
+          >
+            Return to search
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // If no data is available
+  if (!vehicleData) {
+    return (
+      <div className="w-full py-8 px-4 sm:px-6 md:py-12 bg-white">
+        <div className="container mx-auto max-w-screen-xl text-center py-20">
+          <p>Vehicle not found</p>
+          <Link
+            href="/search"
+            className="mt-6 inline-block text-indigo-600 hover:text-blue-700 hover:underline transition-colors duration-200"
+          >
+            Return to search
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Destructure the vehicle data for easier access
+  const {
+    vehicleInfoData,
+    vehicleHistoryData,
+    sellerInfoData,
+    dealGaugeData,
+    consumerReviewsData,
+    features,
+    specs,
+    reviews,
+    priceHistory,
+  } = vehicleData;
+
+  return (
+    <div className="w-full py-8 px-4 sm:px-6 md:py-12 lg:py-16 bg-white min-h-screen">
+      <div className="container mx-auto max-w-screen-xl">
+        {/* Breadcrumb navigation with enhanced accessibility */}
+        <nav className="mb-8 text-sm font-medium" aria-label="Breadcrumb">
+          <ol className="flex flex-wrap items-center text-gray-500">
+            <li className="flex items-center">
+              <Link
+                href="/"
+                className="hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 rounded-sm transition-colors duration-200"
+                aria-label="Go to homepage"
+              >
+                Home
+              </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 mx-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </li>
+            <li className="flex items-center">
+              <Link
+                href="/search"
+                className="hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 rounded-sm transition-colors duration-200"
+                aria-label="Go to search page"
+              >
+                Search
+              </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 mx-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </li>
+            <li className="text-indigo-600 font-semibold" aria-current="page">
+              {vehicleInfoData.title}
+            </li>
+          </ol>
+        </nav>
+
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          {/* Left column (55%) - Enhanced with consistent styling */}
+          <div className="w-full lg:w-[55%] space-y-8 md:space-y-10">
+            {/* Image Gallery - Enhanced with shadow and rounded corners */}
+            <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+              <ImageGallery images={vehicleInfoData.images} />
+            </div>
+
+            {/* Vehicle Info - Enhanced with better padding and shadow */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <VehicleInfo
+                data={{
+                  title: vehicleInfoData.title,
+                  price: vehicleInfoData.price,
+                  dealer: vehicleInfoData.dealer,
+                }}
+                onCheckAvailability={() => setShowCheckAvailability(true)}
+              />
+            </div>
+
+            {/* Deal Gauge - Enhanced styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <DealGauge
+                price={dealGaugeData.price}
+                comparisonModel={dealGaugeData.comparisonModel}
+                comparisonYear={dealGaugeData.comparisonYear}
+                marketRange={dealGaugeData.marketRange}
+              />
+            </div>
+
+            {/* Basic Info - Enhanced with better typography */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Features & Specs
+              </h2>
+              <BasicInfo specs={specs} />
+            </div>
+
+            {/* Features - Enhanced with improved styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <Features features={features} />
+            </div>
+
+            {/* Vehicle History - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <VehicleHistory history={vehicleHistoryData} />
+            </div>
+
+            {/* Seller Info - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Seller Information
+              </h2>
+              <SellerInfo
+                dealer={sellerInfoData.dealer}
+                vehicle={sellerInfoData.vehicle}
+              />
+            </div>
+
+            {/* Consumer Reviews - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Consumer Reviews
+              </h2>
+              <ConsumerReviews
+                year={consumerReviewsData.year}
+                make={consumerReviewsData.make}
+                model={consumerReviewsData.model}
+                overallRating={consumerReviewsData.overallRating}
+                totalReviews={consumerReviewsData.totalReviews}
+                recommendationRate={consumerReviewsData.recommendationRate}
+                ratings={consumerReviewsData.ratings}
+              />
+            </div>
+
+            {/* Recent Reviews - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Recent Reviews
+              </h2>
+              <RecentReviews reviews={reviews} />
+            </div>
+
+            {/* Question Section - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Questions
+              </h2>
+              <QuestionSection onContactClick={handleContactClick} />
+            </div>
+
+            {/* Similar Vehicles - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Similar Vehicles
+              </h2>
+              <SimilarVehicles vehicles={similarVehicles} />
+            </div>
           </div>
 
-          {/* Right Column - Vehicle Info and Forms */}
-          <div className="lg:sticky lg:top-6 space-y-4">
-            <ContactSellerForm />
-            <PrequalifiedSection />
-            <PriceHistory data={mockPriceHistory} />
-            <PaymentCalculator basePrice={25900} apr={7.0} salesTax={10.25} />
+          {/* Right column (45%) - Enhanced with spacing and styling */}
+          <div className="w-full lg:w-[45%] space-y-8 md:space-y-10 mt-8 lg:mt-0">
+            {/* Contact Seller Form - Enhanced with better styling */}
+            <div className="bg-gradient-to-r from-white-600 to-indigo-700 p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+              {/* <h2 className="text-2xl font-bold text-white mb-6 leading-tight">
+                Contact Seller
+              </h2> */}
+              <ContactSellerForm />
+            </div>
+
+            {/* Prequalified Section - Enhanced with better styling */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+              <PrequalifiedSection />
+            </div>
+
+            {/* Price History - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+                Price History
+              </h2>
+              <PriceHistory data={priceHistory} />
+            </div>
+
+            {/* Payment Calculator - Enhanced with better styling */}
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <PaymentCalculator
+                basePrice={vehicleInfoData.price}
+                apr={4.9}
+                salesTax={8.2}
+              />
+            </div>
+
+            {/* Back to top button with enhanced animations */}
+            <div className="fixed bottom-6 right-6 lg:hidden z-50">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-3 rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform hover:scale-105 active:scale-95"
+                aria-label="Back to top"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 10l7-7m0 0l7 7m-7-7v18"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-        <SimilarVehicles currentVehicle={vehicleData} />
+
+        {/* Call to action section with enhanced styling */}
+        <section className="mt-16 mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 text-white text-center transform transition-all duration-300 hover:shadow-xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+            Interested in similar vehicles?
+          </h2>
+          <p className="mb-8 text-white/90 max-w-2xl mx-auto text-lg leading-relaxed">
+            Browse our inventory to find other vehicles that match your
+            preferences
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/shopping/new-cars"
+              className="bg-white text-indigo-700 hover:bg-blue-50 px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-700"
+            >
+              Browse new cars
+            </Link>
+            <Link
+              href="/shopping/used-cars"
+              className="bg-transparent hover:bg-white/10 border border-white px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-700"
+            >
+              Find used vehicles
+            </Link>
+          </div>
+        </section>
       </div>
       <Footer />
     </div>
