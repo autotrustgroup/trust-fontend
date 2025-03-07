@@ -2,29 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide scrollbar but maintain functionality */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
-
-/* Card hover effects */
-@layer components {
-  .card-zoom {
-    @apply transition-transform duration-300 ease-in-out;
-  }
-
-  .card-zoom:hover {
-    @apply scale-105;
-  }
-}
-
-@layer base {}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;

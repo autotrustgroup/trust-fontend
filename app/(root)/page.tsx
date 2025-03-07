@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SearchForm } from "@/features/vehicle-search";
-import WelcomeSection from "../../components/features/home/welcome-section";
-import CategoryNav from "../../components/features/home/category-nav";
-import PopularVehicleShowcase from "@/components/features/home/popular-vehicle-showcase";
-import CompareSection from "../../components/features/home/compare-section";
-import NewsSection from "../../components/features/home/news-section";
+import WelcomeSection from "../../components/home/welcome-section";
+import CategoryNav from "../../components/home/category-nav";
+import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
+import CompareSection from "../../components/home/compare-section";
+import NewsSection from "../../components/home/news-section";
 import Footer from "../../components/layout/footer";
 import { VehicleType } from "@/types/vehicle";
-import TrendingSearches from "@/components/features/home/trending-searchs";
+import TrendingSearches from "@/components/home/trending-searchs";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (

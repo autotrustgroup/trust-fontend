@@ -1,7 +1,7 @@
-import { FinanceHero } from "@/components/features/finance/hero";
-import { HowItWorks } from "@/components/features/finance/how-it-works";
-import { FinanceNews } from "@/components/features/finance/news";
-import { FinanceFAQ } from "@/components/features/finance/faq";
+import { FinanceHero } from "@/components/finance/hero";
+import { HowItWorks } from "@/components/finance/how-it-works";
+import { FinanceNews } from "@/components/finance/news";
+import { FinanceFAQ } from "@/components/finance/faq";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export default function FinancePage() {

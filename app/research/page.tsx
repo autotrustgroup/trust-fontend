@@ -1,8 +1,8 @@
-import { ResearchHero } from "@/components/features/research/hero";
-import { ResearchByBrand } from "@/components/features/research/research-by-brand";
-import { BestOfAwards } from "@/components/features/research/best-of-awards";
-import { ResearchGuides } from "@/components/features/research/research-guides";
-import { ExpertAdvice } from "@/components/features/research/expert-advice";
+import { ResearchHero } from "@/components/research/hero";
+import { ResearchByBrand } from "@/components/research/research-by-brand";
+import { BestOfAwards } from "@/components/research/best-of-awards";
+import { ResearchGuides } from "@/components/research/research-guides";
+import { ExpertAdvice } from "@/components/research/expert-advice";
 import Footer from "@/components/layout/footer";
 
 export default function ResearchPage() {

@@ -1,9 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, User } from "lucide-react";
+import { useState } from "react";
+import { SignInModal } from "@/components/auth/sign-in-modal";
 
 export default function Navbar() {
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+
+  const openSignInModal = () => {
+    setIsSignInModalOpen(true);
+  };
+
+  const closeSignInModal = () => {
+    setIsSignInModalOpen(false);
+  };
+
   return (
     <header className="border-b">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -61,7 +75,11 @@ export default function Navbar() {
 
         {/* Right Side Actions */}
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" className="hidden md:flex items-center gap-2">
+          <Button
+            variant="ghost"
+            className="hidden md:flex items-center gap-2"
+            onClick={openSignInModal}
+          >
             <User className="h-4 w-4" />
             <span>Sign In</span>
           </Button>
@@ -74,6 +92,9 @@ export default function Navbar() {
           </Button>
         </div>
       </nav>
+
+      {/* Sign In Modal */}
+      <SignInModal isOpen={isSignInModalOpen} onClose={closeSignInModal} />
     </header>
   );
 }
