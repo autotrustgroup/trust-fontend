@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-
+import Image from "next/image";
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-white pt-12 pb-8">
@@ -9,17 +8,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Buying & Selling */}
           <div>
-            <h3 className="text-[15px] font-bold mb-4">Buying & Selling</h3>
+            <h3 className="text-sm font-bold mb-4">Buying & Selling</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/financing" className="text-[15px] hover:underline">
+                <Link
+                  href="/financing"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
+                >
                   Financing
                 </Link>
               </li>
               <li>
                 <Link
                   href="/find-a-car"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Find a Car
                 </Link>
@@ -27,7 +29,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/find-a-dealer"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Find a Dealer
                 </Link>
@@ -35,7 +37,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/listings-by-city"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Listings by City
                 </Link>
@@ -43,7 +45,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/certified-pre-owned"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Certified Pre-Owned
                 </Link>
@@ -51,7 +53,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/car-payment-calculators"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Car Payment Calculators
                 </Link>
@@ -59,7 +61,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/car-reviews-and-ratings"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Car Reviews & Ratings
                 </Link>
@@ -67,7 +69,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/compare-side-by-side"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Compare Side by Side
                 </Link>
@@ -75,7 +77,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/fraud-awareness"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Fraud Awareness
                 </Link>
@@ -83,22 +85,21 @@ export default function Footer() {
               <li>
                 <Link
                   href="/sell-your-car"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Sell Your Car
                 </Link>
               </li>
             </ul>
           </div>
-
           {/* Explore Our Brand */}
           <div>
-            <h3 className="text-[15px] font-bold mb-4">Explore Our Brand</h3>
+            <h3 className="text-sm font-bold mb-4">Explore Our Brand</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="https://www.newcars.com"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   NewCars.com
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -107,22 +108,19 @@ export default function Footer() {
               <li>
                 <Link
                   href="https://www.dealerrater.com"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   DealerRater
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
                 </Link>
               </li>
             </ul>
-
-            <h3 className="text-[15px] font-bold mt-8 mb-4">
-              For Dealer Partners
-            </h3>
+            <h3 className="text-sm font-bold mt-8 mb-4">For Dealer Partners</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/platform-login"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Platform Log-In
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -131,7 +129,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/cars-commerce-overview"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Cars Commerce Overview
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -140,7 +138,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="https://www.cars.com"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Cars.com
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -149,7 +147,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/dealer-inspire"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Dealer Inspire
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -158,7 +156,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/accutrade"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   AccuTrade
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -167,7 +165,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/cars-commerce-media-network"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Cars Commerce Media Network
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -175,15 +173,14 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
           {/* Our Company */}
           <div>
-            <h3 className="text-[15px] font-bold mb-4">Our Company</h3>
+            <h3 className="text-sm font-bold mb-4">Our Company</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/about-cars-com"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   About Cars.com
                 </Link>
@@ -191,7 +188,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact-cars-com"
-                  className="text-[15px] hover:underline"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
                 >
                   Contact Cars.com
                 </Link>
@@ -199,46 +196,54 @@ export default function Footer() {
               <li>
                 <Link
                   href="/investor-relations"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Investor Relations
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-[15px] hover:underline">
+                <Link
+                  href="/careers"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
+                >
                   Careers
                 </Link>
               </li>
               <li>
                 <Link
                   href="/licensing-and-reprints"
-                  className="text-[15px] hover:underline inline-flex items-center"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center"
                 >
                   Licensing & Reprints
                   <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
                 </Link>
               </li>
               <li>
-                <Link href="/site-map" className="text-[15px] hover:underline">
+                <Link
+                  href="/site-map"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
+                >
                   Site Map
                 </Link>
               </li>
               <li>
-                <Link href="/feedback" className="text-[15px] hover:underline">
+                <Link
+                  href="/feedback"
+                  className="text-sm underline hover:decoration-purple-600 hover:decoration-2"
+                >
                   Feedback
                 </Link>
               </li>
             </ul>
           </div>
-
           {/* Our Mobile App */}
           <div>
-            <h3 className="text-[15px] font-bold mb-4">Our Mobile App</h3>
+            <h3 className="text-sm font-bold mb-4">Our Mobile App</h3>
             <div className="flex flex-row gap-4 mb-8">
               <Link
                 href="https://apps.apple.com/app/cars-com/id353263726"
-                className="transition-transform hover:scale-105"
+                className="transition-transform"
               >
                 <Image
                   src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
@@ -250,7 +255,7 @@ export default function Footer() {
               </Link>
               <Link
                 href="https://play.google.com/store/apps/details?id=com.cars.android"
-                className="transition-transform hover:scale-105"
+                className="transition-transform "
               >
                 <Image
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
@@ -261,22 +266,28 @@ export default function Footer() {
                 />
               </Link>
             </div>
-
-            <h3 className="text-[15px] font-bold mb-4">Connect With Us</h3>
+            <h3 className="text-sm font-bold mb-4">Connect With Us</h3>
             <div className="flex gap-4">
               <Link
                 href="https://www.tiktok.com/@carsdotcom"
-                className="hover:opacity-80 transition-transform hover:scale-110"
+                className=" transition-transform "
               >
                 <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                    <path d="M19.321 5.562a5.122 5.122 0 01-3.585-1.475A5.123 5.123 0 0114.26.502h-4.163v16.594c0 1.151-.498 2.11-1.491 2.873a4.441 4.441 0 01-2.738.922 4.476 4.476 0 01-3.154-1.305A4.478 4.478 0 011.41 16.432a4.478 4.478 0 011.305-3.154 4.476 4.476 0 013.154-1.305c.46-.001.918.07 1.356.211v-4.27a8.877 8.877 0 00-1.356-.105c-2.351 0-4.47.953-6.012 2.495S-2.639 9.926-2.639 12.277c0 2.351.953 4.47 2.495 6.012s3.661 2.495 6.012 2.495c2.351 0 4.47-.953 6.012-2.495s2.495-3.661 2.495-6.012V6.955a9.308 9.308 0 005.688 1.936v-4.235c-.249.001-.498-.03-.742-.094z" />
+                  <svg
+                    fill="white"
+                    width="20px"
+                    height="20px"
+                    viewBox="0 0 512 512"
+                    id="icons"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z" />
                   </svg>
                 </div>
               </Link>
               <Link
                 href="https://www.facebook.com/CarsDotCom"
-                className="hover:opacity-80 transition-transform hover:scale-110"
+                className=" transition-transform "
               >
                 <div className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center">
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
@@ -286,7 +297,7 @@ export default function Footer() {
               </Link>
               <Link
                 href="https://www.youtube.com/user/CarsDotCom"
-                className="hover:opacity-80 transition-transform hover:scale-110"
+                className=" transition-transform "
               >
                 <div className="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center">
                   <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
@@ -296,7 +307,7 @@ export default function Footer() {
               </Link>
               <Link
                 href="https://www.instagram.com/carsdotcom"
-                className="hover:opacity-80 transition-transform hover:scale-110"
+                className=" transition-transform "
               >
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#515BD4] via-[#DD2A7B] to-[#FEDA77] flex items-center justify-center">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
@@ -306,46 +317,74 @@ export default function Footer() {
               </Link>
               <Link
                 href="https://zaolo.com/carsdotcom"
-                className="hover:opacity-80 transition-transform hover:scale-110"
+                className=" transition-transform "
               >
-                <div className="w-10 h-10 rounded-full bg-[#34A853] flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                    <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5.339 13.375c-.452.452-1.174.452-1.626 0l-1.148-1.148a.603.603 0 0 1-.178-.429v-4.466a.605.605 0 0 1 1.21 0v4.194l1.004 1.004a.452.452 0 0 0 .64 0 .452.452 0 0 0 0-.64l-1.644-1.644v-2.914a.605.605 0 0 1 1.21 0v2.642l1.532 1.532c.452.452.452 1.174 0 1.626zm-8.184-3.167a.605.605 0 0 1-.605-.605v-2.57a.905.905 0 0 1 .905-.905h1.667a.605.605 0 0 1 0 1.21h-1.667v2.265a.605.605 0 0 1-.605.605h.305zm-.91 2.272a.605.605 0 0 1-.605-.605v-1.667a.605.605 0 0 1 1.21 0v1.667a.605.605 0 0 1-.605.605zm5.335-5.167a.83.83 0 1 1 0-1.66.83.83 0 0 1 0 1.66z" />
+                <div className="w-10 h-10 rounded-full bg-[#e60023] flex items-center justify-center">
+                  <svg
+                    width="33"
+                    height="33"
+                    fill="white"
+                    viewBox="0 0 33 33"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M14.3395 21.7893C13.5522 25.9318 12.6712 29.8868 9.74708 31.9487C8.8661 25.7069 11.0404 21.0208 12.0526 16.0535C10.3282 13.1669 12.2588 7.33737 15.8015 8.78068C20.2627 10.5427 11.9402 19.54 17.526 20.6646C23.1118 21.7893 25.7923 10.5239 22.1933 6.85001C16.9824 1.54536 7.04789 6.7188 8.21004 14.329C8.50995 16.2035 10.4219 16.747 8.97856 19.315C5.64206 18.5652 4.62987 15.941 4.76108 12.4171C5.16652 6.94664 9.45933 2.56671 14.9205 2.05145C21.2186 1.33917 27.1419 4.35701 28.0416 10.299C28.8663 16.9532 25.0987 24.226 18.2945 23.7012C16.8261 23.4377 15.4581 22.7764 14.3395 21.7893Z"></path>
                   </svg>
                 </div>
               </Link>
             </div>
           </div>
         </div>
-
         {/* Legal Footer */}
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
-            <Link href="/terms" className="hover:underline">
+            <Link
+              href="/terms"
+              className="underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
               Terms & Conditions of Use
             </Link>
-            <span>•</span>
-            <Link href="/privacy" className="hover:underline">
+            <Link
+              href="/privacy"
+              className="underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
               Privacy Notice
             </Link>
-            <span>•</span>
-            <Link href="/california-privacy" className="hover:underline">
+            <Link
+              href="/california-privacy"
+              className="underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
               California Privacy Notice
             </Link>
-            <span>•</span>
-            <button className="hover:underline">My Privacy Choices</button>
-            <span>•</span>
-            <button className="hover:underline">Cookie Preferences</button>
-            <span>•</span>
-            <Link href="/accessibility" className="hover:underline">
+            <Link
+              href="about/ccpa-privacy-notice"
+              className="flex gap-2 underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
+              My Privacy Choices
+              <Image
+                src="https://www.cars.com/svg/generic/privacyoptions.svg"
+                alt="My Privacy Choices"
+                width={0}
+                height={14}
+                className="h-[14px] w-auto"
+              />
+            </Link>
+            <button className="underline text-sm hover:decoration-purple-600 hover:decoration-2">
+              Cookie Preferences
+            </button>
+            <Link
+              href="/accessibility"
+              className="underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
               Accessibility Statement
             </Link>
-            <span>•</span>
-            <Link href="/ad-choices" className="hover:underline">
+            <Link
+              href="/ad-choices"
+              className="underline text-sm hover:decoration-purple-600 hover:decoration-2"
+            >
               Ad Choices
             </Link>
           </div>
-          <p className="text-[13px] text-gray-600">
+          <p className="text-sm text-gray-600">
             © 2025 Cars.com. All rights reserved.
           </p>
         </div>
