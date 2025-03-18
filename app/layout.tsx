@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/layout/navigation/navbar";
+import Footer from "@/components/layout/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+              <Navbar />
+              {children}
+              <Footer />
+      </body>
     </html>
   );
 }
