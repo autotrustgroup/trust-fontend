@@ -9,10 +9,10 @@ import CategoryNav from "@/components/home/category-nav";
 import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
 import CompareSection from "@/components/home/compare-section";
 import NewsSection from "@/components/home/news-section";
-import Footer from "@/components/layout/footer";
 import { VehicleType } from "@/types/vehicle";
 import TrendingSearches from "@/components/home/trending-searchs";
 import Container from "@/components/common-components/container";
+import SellYourCar from "@/components/banners/sell-your-car";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -185,13 +185,14 @@ export default function Page() {
                 View all categories
               </Link>
             </div>
-            <div className="bg-white rounded-xl p-1 md:p-2 shadow-sm hover:shadow-md transition-all duration-300">
               <CategoryNav
                 selectedCategory={toCategoryNavFormat(selectedCategory)}
                 onCategoryChange={handleCategoryChange}
               />
-            </div>
           </section>
+
+          {/* Sell your car banner */}
+          <SellYourCar />
 
           {/* 4. Vehicle Showcase with shadow effect */}
           <section className="mb-16 md:mb-20">
