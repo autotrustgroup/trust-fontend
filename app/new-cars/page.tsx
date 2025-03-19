@@ -1,13 +1,12 @@
-import { NewCarHero } from "@/components/features/new-cars/hero";
-import { CarCategories } from "@/components/features/new-cars/car-categories";
-import { RecommendedCars } from "@/components/features/new-cars/recommended-cars";
-import { FeaturedCar } from "@/components/features/new-cars/featured-car";
-import { BrandGrid } from "@/components/features/new-cars/brand-grid";
-import { PopularComparisons } from "@/components/features/new-cars/popular-comparisons";
-import { LatestNews } from "@/components/features/new-cars/latest-news";
-import { NearbyDealers } from "@/components/features/new-cars/nearby-dealers";
-import { ReadyToBuy } from "@/components/features/new-cars/ready-to-buy";
-import Footer from "@/components/layout/footer";
+import { NewCarHero } from "@/components/new-cars/hero";
+import { CarCategories } from "@/components/new-cars/car-categories";
+import { RecommendedCars } from "@/components/new-cars/recommended-cars";
+import { FeaturedCar } from "@/components/new-cars/featured-car";
+import { BrandGrid } from "@/components/new-cars/brand-grid";
+import { PopularComparisons } from "@/components/new-cars/popular-comparisons";
+import { LatestNews } from "@/components/new-cars/latest-news";
+import { NearbyDealers } from "@/components/new-cars/nearby-dealers";
+import { ReadyToBuy } from "@/components/new-cars/ready-to-buy";
 
 export default function NewCarsPage() {
   return (
@@ -23,7 +22,6 @@ export default function NewCarsPage() {
         <NearbyDealers />
         <ReadyToBuy />
       </div>
-      <Footer />
     </main>
   );
 }

@@ -3,7 +3,6 @@ import { ResearchByBrand } from "@/components/research/research-by-brand";
 import { BestOfAwards } from "@/components/research/best-of-awards";
 import { ResearchGuides } from "@/components/research/research-guides";
 import { ExpertAdvice } from "@/components/research/expert-advice";
-import Footer from "@/components/layout/footer";
 
 export default function ResearchPage() {
   return (
@@ -16,7 +15,6 @@ export default function ResearchPage() {
         <ResearchGuides />
         <ExpertAdvice />
       </div>
-      <Footer />
     </main>
   );
 }

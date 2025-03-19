@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   FilterPanel,
@@ -9,7 +8,6 @@ import {
   SortControls,
   CarListings,
 } from "@/features/vehicle-search/components/search-results";
-import { VehicleListing } from "@/features/vehicle-search/types/search-results";
 import { mockListings } from "@/features/vehicle-search/data/mock-listings";
 
 export default function ResultsPage() {

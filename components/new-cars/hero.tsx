@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SearchForm } from "@/components/features/new-cars/search-form";
+import { SearchForm } from "@/components/new-cars/search-form";
 
 export function NewCarHero() {
   return (
