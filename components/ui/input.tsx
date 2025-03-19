@@ -1,22 +1,43 @@
-import * as React from "react"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+interface InputProps extends React.ComponentProps<"input"> {
+  label: string;
+}
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, label, value, id, ...props }, ref) => {
+    const inputId = id || `input-${label.replace(/\s+/g, "-").toLowerCase()}`;
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
+      <div className="relative w-full h-full">
+        <input
+          id={inputId}
+          type={type}
+          className={cn(
+            "peer flex w-full border border-input bg-transparent px-4 pt-5 pb-2 text-base transition-colors placeholder-transparent ring-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+            className
+          )}
+          ref={ref}
+          value={value}
+          placeholder=" " // Keeps space for floating label
+          {...props}
+        />
+        <label
+          htmlFor={inputId}
+          className={cn(
+            "absolute left-3 top-3 text-xs text-gray-500 transition-all cursor-text",
+            value
+              ? "top-1 text-xs text-gray-500 peer-placeholder-shown:top-0"
+              : "peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-muted-foreground peer-focus:top-3 peer-focus:text-xs peer-focus:text-gray-500"
+          )}
+        >
+          {label}
+        </label>
+      </div>
+    );
   }
-)
-Input.displayName = "Input"
+);
 
-export { Input }
+Input.displayName = "Input";
+
+export { Input };

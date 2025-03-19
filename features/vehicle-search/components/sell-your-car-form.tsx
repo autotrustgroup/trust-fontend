@@ -1,13 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, Car, Hash, CheckCircle, DollarSign } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  SellVehicleParams,
-  IdentifierType,
-  SellingOption,
-} from "../types/search-params";
+  ChevronDown,
+  Car,
+  Hash,
+  CheckCircle,
+  DollarSign,
+  ChevronDownIcon,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { SellVehicleParams } from "../types/search-params";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface SellYourCarFormProps {
   sellParams?: SellVehicleParams;
@@ -63,158 +70,151 @@ const SellYourCarForm: React.FC<SellYourCarFormProps> = ({
   };
 
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-1 gap-4">
+    <form onSubmit={onSubmit} className="">
       {/* Identifier Type Toggle with improved styling */}
-      <div className="flex justify-between gap-4">
-        <div className="inline-flex rounded-full bg-gray-100/80 p-1 shadow-sm">
-          <button
-            type="button"
-            onClick={() => handleIdentifierTypeChange("plate")}
-            className={cn(
-              "px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1.5",
-              identifierType === "plate"
-                ? "bg-white text-indigo-600 shadow-sm"
-                : "text-gray-700 hover:bg-white/60"
-            )}
-            aria-label="Use license plate"
-            aria-pressed={identifierType === "plate"}
-          >
-            <Car className="h-3.5 w-3.5" />
-            License plate
-          </button>
-          <button
-            type="button"
-            onClick={() => handleIdentifierTypeChange("vin")}
-            className={cn(
-              "px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1.5",
-              identifierType === "vin"
-                ? "bg-white text-indigo-600 shadow-sm"
-                : "text-gray-700 hover:bg-white/60"
-            )}
-            aria-label="Use VIN"
-            aria-pressed={identifierType === "vin"}
-          >
-            <Hash className="h-3.5 w-3.5" />
-            VIN
-          </button>
-        </div>
-
-        <div className="flex items-center gap-1 text-xs text-indigo-600">
-          <CheckCircle className="h-3 w-3" />
-          <span className="font-medium">Instant quote</span>
-        </div>
-      </div>
-
-      {/* Input Fields with enhanced visuals */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
-        <div className="md:col-span-9">
-          <div className="relative group">
-            <input
-              type="text"
-              name="identifier"
-              value={sellParams.identifier}
-              onChange={handleInputChange}
-              placeholder={identifierType === "plate" ? "License plate" : "VIN"}
-              className="w-full h-[45px] px-4 bg-white border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 group-hover:border-gray-300 shadow-sm text-sm"
-              aria-label={
-                identifierType === "plate" ? "Enter license plate" : "Enter VIN"
-              }
-            />
-            <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-              {identifierType === "plate" ? (
-                <Car className="h-3.5 w-3.5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" />
-              ) : (
-                <Hash className="h-3.5 w-3.5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" />
-              )}
-            </div>
-            <label className="absolute -top-2 left-2 px-1 text-xs font-medium bg-white text-gray-600 group-hover:text-indigo-600 transition-colors duration-200">
-              {identifierType === "plate" ? "License plate" : "VIN"}
-            </label>
-          </div>
-        </div>
-
-        <div className="md:col-span-3">
-          <div className="relative group">
-            <select
-              name="zipCode"
-              value={sellParams.zipCode}
-              onChange={handleInputChange}
-              className="w-full h-[45px] pl-3 pr-8 bg-white border border-gray-200 rounded-xl appearance-none text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 group-hover:border-gray-300 shadow-sm"
-              aria-label="Enter ZIP code"
-            >
-              <option value="" disabled>
-                ZIP Code
-              </option>
-              <option value="60606">60606</option>
-              <option value="90210">90210</option>
-              <option value="10001">10001</option>
-              <option value="75001">75001</option>
-              <option value="33101">33101</option>
-            </select>
-            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" />
-            <label className="absolute -top-2 left-2 px-1 text-xs font-medium bg-white text-gray-600 group-hover:text-indigo-600 transition-colors duration-200">
-              ZIP Code
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
-        <div className="md:col-span-9">
-          <label className="flex items-center gap-2 cursor-pointer group p-2 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
-            <div className="relative flex items-center justify-center">
-              <input
-                type="radio"
-                name="sellingOption"
-                value="instant-offer"
-                checked={sellParams.sellingOption === "instant-offer"}
-                onChange={() => handleSellTypeChange("instant")}
-                className="sr-only"
-                aria-label="Select instant offer"
-              />
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-12">
+        <div className="">
+          <div className="flex p-1 border border-black rounded-full  bg-white">
+            <div className="relative inline-flex w-full lg:w-[350px] ">
               <div
                 className={cn(
-                  "w-4 h-4 rounded-full border flex items-center justify-center transition-all duration-200",
-                  sellType === "instant"
-                    ? "border-indigo-500 bg-indigo-100/50"
-                    : "border-gray-300 group-hover:border-gray-400"
+                  "absolute top-0 bottom-0 left-0 w-1/2 bg-black rounded-full transition-all duration-300",
+                  identifierType === "vin"
+                    ? "translate-x-full"
+                    : "translate-x-0"
                 )}
+              ></div>
+              <button
+                type="button"
+                onClick={() => handleIdentifierTypeChange("plate")}
+                className={cn(
+                  "relative px-3 py-1.5 text-base font-medium rounded-full flex items-center gap-1.5 w-1/2 justify-center transition-all duration-300",
+                  identifierType === "plate"
+                    ? "text-white font-semibold"
+                    : "text-gray-700"
+                )}
+                aria-label="Use license plate"
+                aria-pressed={identifierType === "plate"}
               >
-                {sellType === "instant" && (
-                  <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
+                License plate
+              </button>
+              <button
+                type="button"
+                onClick={() => handleIdentifierTypeChange("vin")}
+                className={cn(
+                  "relative px-3 py-1.5 text-base font-medium rounded-full flex items-center gap-1.5 w-1/2 justify-center transition-all duration-300",
+                  identifierType === "vin"
+                    ? "text-white font-semibold"
+                    : "text-gray-700"
                 )}
+                aria-label="Use VIN"
+                aria-pressed={identifierType === "vin"}
+              >
+                VIN
+              </button>
+            </div>
+          </div>
+          {identifierType === "plate" ? (
+            <div className="grid grid-cols-6 my-4 gap-4">
+              <div className="col-span-4">
+                <Input
+                  className="rounded-lg border border-gray-500 h-full w-full bg-white peer"
+                  type="text"
+                  name="identifier"
+                  label="Enter license plate"
+                  value={sellParams.identifier}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="col-span-2">
+                <div className="md:col-span-4">
+                  <div className="relative h-full">
+                    <select
+                      name="zipCode"
+                      className="border border-gray-500 px-4 pt-6 pb-2 w-full appearance-none bg-white pr-8 h-full rounded-lg"
+                      value={sellParams.zipCode || 30}
+                      onChange={handleInputChange}
+                      aria-label="Enter ZIP code"
+                    >
+                      <option value="10">AT</option>
+                      <option value="20">OT</option>
+                      <option value="30">OH</option>
+                      <option value="50">AD</option>
+                      <option value="100">CV</option>
+                      <option value="250">WF</option>
+                      <option value="500">QW</option>
+                    </select>
+                    <label className="absolute top-2 left-4 text-xs text-gray-500">
+                      State
+                    </label>
+                    <ChevronDownIcon className="w-5 h-5 absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <span className="text-xs text-gray-800 group-hover:text-indigo-600 transition-colors font-medium">
-                Instant offer
-              </span>
+          ) : (
+            <div className="my-4 flex flex-col gap-1">
+              <Input
+                className="rounded-lg border border-gray-500 h-full w-full bg-white peer"
+                type="text"
+                name="identifier"
+                label="VIN"
+                value={sellParams.identifier}
+                onChange={handleInputChange}
+              />
+              <a href="#" className="underline font-semibold">
+                Where to locate your VIN?
+              </a>
             </div>
-            {sellType === "instant" && (
-              <CheckCircle className="h-3 w-3 text-indigo-500 ml-auto" />
-            )}
-          </label>
+          )}
         </div>
 
-        <div className="md:col-span-3">
-          <button
-            type="submit"
-            className="h-[45px] w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:translate-y-[-1px] active:translate-y-[1px] text-sm"
-            aria-label="Get car value estimate"
-          >
-            <DollarSign className="h-3.5 w-3.5" />
-            Get estimate
-          </button>
+        <div className="">
+          <div className="flex flex-col gap-4">
+            <p className="text-base font-normal">Estimate car value for:</p>
+            <RadioGroup defaultValue="instant" className="text-nowrap">
+              <div className="flex flex-col gap-4 text-base font-normal">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="instant" id="instant" />
+                  <Label htmlFor="instant" className="cursor-pointer">
+                    Instant offer
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="listing" id="listing" />
+                  <Label htmlFor="listing" className="cursor-pointer">
+                    Selling it yourself on Cars.com
+                  </Label>
+                </div>
+              </div>
+            </RadioGroup>
+          </div>
+        </div>
+
+        <div className="">
+          <div className="flex flex-col gap-2">
+            <div className="w-full">
+              <button
+                type="submit"
+                className="w-full lg:w-fit px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-full transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform active:translate-y-[1px] text-sm"
+                aria-label="Get car value estimate"
+              >
+                Get estimate
+              </button>
+            </div>
+            <div className="text-xs mt-1 leading-5">
+              By clicking here, you authorize Cars.com to continue with
+              collecting your information. We only save this data to provide you
+              a listing to sell your car. We value and protect your privacy.
+              <a href="#" className="underline font-semibold">
+                Cars.com Privacy Notice
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Privacy notice */}
-      <div className="text-xs text-gray-500 mt-1">
-        By continuing, you agree to our{" "}
-        <a href="#" className="text-indigo-600 hover:underline">
-          Privacy Policy
-        </a>
-      </div>
     </form>
   );
 };

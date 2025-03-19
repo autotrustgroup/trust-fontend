@@ -3,24 +3,32 @@
 @tailwind utilities;
 
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .hide-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-  }
-  
-  .gradient-transparent-white-right {
-    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.8) 50%, white 100%);
-  }
-  
-  .gradient-transparent-white-left {
-    background: linear-gradient(to left, transparent 0%, rgba(255, 255, 255, 0.8) 50%, white 100%);
-  }
+  display: none;
+}
 
-  .overlay-gradient {
-    background: linear-gradient(0deg, rgba(20, 24, 23, 0.75) 45%, transparent);
-  }
-  
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
+.gradient-transparent-white-right {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    white 100%
+  );
+}
+
+.gradient-transparent-white-left {
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    white 100%
+  );
+}
+
+.overlay-gradient {
+  background: linear-gradient(0deg, rgba(20, 24, 23, 0.75) 45%, transparent);
+}
