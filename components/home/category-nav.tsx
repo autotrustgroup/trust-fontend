@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { VehicleCategory } from "@/lib/data";
 
@@ -33,7 +33,10 @@ export default function CategoryNav({
   className,
 }: CategoryNavProps) {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const [isAtStart, setIsAtStart] = React.useState(true);
+  const [isAtEnd, setIsAtEnd] = React.useState(false);
 
+  // Handle scroll right
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
@@ -43,11 +46,51 @@ export default function CategoryNav({
     }
   };
 
+  // Handle scroll left
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Check scroll position and update button visibility
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      setIsAtStart(container.scrollLeft <= 0);
+      setIsAtEnd(
+        Math.ceil(container.scrollLeft + container.clientWidth) >=
+          container.scrollWidth
+      );
+    }
+  };
+
+  React.useEffect(() => {
+    // Set up scroll event listener
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
+
   return (
     <div className={cn("relative", className)}>
+      {/* Gradient overlay with minimized white effect */}
+      {/* <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white via-transparent to-white" style={{backgroundSize: '100% 80%'}} /> */}
+
       <div
         ref={scrollContainerRef}
-        className="flex gap-3 overflow-x-auto py-2 scrollbar-hide"
+        className="flex gap-3 py-2 overflow-x-auto hide-scrollbar"
       >
         {categories.map((category) => (
           <button
@@ -57,7 +100,7 @@ export default function CategoryNav({
               "px-6 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors",
               selectedCategory === category.id
                 ? "bg-black text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                : "bg-gray-100 text-gray-800 hover:bg-black hover:text-white"
             )}
           >
             {category.name}
@@ -65,14 +108,40 @@ export default function CategoryNav({
         ))}
       </div>
 
-      {/* Scroll button - only show on desktop when content overflows */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center">
+      {/* Scroll buttons - Left and Right */}
+      <div
+        className={cn(
+          "absolute gradient-transparent-white-left pr-4 left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center",
+          { "md:hidden": isAtStart }
+        )}
+      >
+        <button
+          onClick={scrollLeft}
+          className={cn(
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-black shadow-md border border-gray-100 transition-colors",
+            { "opacity-0 pointer-events-none": isAtStart }
+          )}
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="h-5 w-5 text-white" />
+        </button>
+      </div>
+
+      <div
+        className={cn(
+          "absolute gradient-transparent-white-right pl-4 right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center",
+          { "md:hidden": isAtEnd }
+        )}
+      >
         <button
           onClick={scrollRight}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 border border-gray-100"
+          className={cn(
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-black shadow-md border border-gray-100 transition-colors ",
+            { "opacity-0 pointer-events-none": isAtEnd }
+          )}
           aria-label="Scroll right"
         >
-          <ChevronRight className="h-5 w-5 text-gray-600" />
+          <ChevronRight className="h-5 w-5 text-white" />
         </button>
       </div>
     </div>
