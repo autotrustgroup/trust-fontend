@@ -1,25 +1,10 @@
 "use client";
 
-import * as React from "react";
-import { ChevronRight, ChevronLeft } from "lucide-react";
-import { cn } from "@/lib/utils";
 import type { VehicleCategory } from "@/lib/data";
-
-// Categories as simple text
-const categories = [
-  { id: "Electric", name: "Electric" },
-  { id: "SUV", name: "SUV" },
-  { id: "Sedan", name: "Sedan" },
-  { id: "Pickup Truck", name: "Pickup Truck" },
-  { id: "Luxury", name: "Luxury" },
-  { id: "Crossover", name: "Crossover" },
-  { id: "Hybrid", name: "Hybrid" },
-  { id: "Diesel", name: "Diesel" },
-  { id: "Coupe", name: "Coupe" },
-  { id: "Hatchback", name: "Hatchback" },
-  { id: "Wagon", name: "Wagon" },
-  { id: "Convertible", name: "Convertible" },
-];
+import { cn } from "@/lib/utils";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useEffect } from "react";
+import { categories } from "./constants/category";
 
 interface CategoryNavProps {
   selectedCategory: VehicleCategory;
@@ -36,7 +21,6 @@ export default function CategoryNav({
   const [isAtStart, setIsAtStart] = React.useState(true);
   const [isAtEnd, setIsAtEnd] = React.useState(false);
 
-  // Handle scroll right
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
@@ -46,7 +30,6 @@ export default function CategoryNav({
     }
   };
 
-  // Handle scroll left
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
@@ -56,7 +39,6 @@ export default function CategoryNav({
     }
   };
 
-  // Check scroll position and update button visibility
   const handleScroll = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
@@ -68,14 +50,12 @@ export default function CategoryNav({
     }
   };
 
-  React.useEffect(() => {
-    // Set up scroll event listener
+  useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
       container.addEventListener("scroll", handleScroll);
     }
 
-    // Cleanup on component unmount
     return () => {
       if (container) {
         container.removeEventListener("scroll", handleScroll);
@@ -85,9 +65,6 @@ export default function CategoryNav({
 
   return (
     <div className={cn("relative", className)}>
-      {/* Gradient overlay with minimized white effect */}
-      {/* <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white via-transparent to-white" style={{backgroundSize: '100% 80%'}} /> */}
-
       <div
         ref={scrollContainerRef}
         className="flex gap-3 py-2 overflow-x-auto hide-scrollbar"
@@ -99,8 +76,8 @@ export default function CategoryNav({
             className={cn(
               "px-6 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors",
               selectedCategory === category.id
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-black hover:text-white"
+                ? "bg-grey-900 text-white"
+                : "bg-gray-100 text-gray-800 hover:bg-grey-900 hover:text-white"
             )}
           >
             {category.name}
@@ -108,7 +85,6 @@ export default function CategoryNav({
         ))}
       </div>
 
-      {/* Scroll buttons - Left and Right */}
       <div
         className={cn(
           "absolute gradient-transparent-white-left pr-4 left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center",
@@ -118,12 +94,12 @@ export default function CategoryNav({
         <button
           onClick={scrollLeft}
           className={cn(
-            "flex h-10 w-10 group items-center justify-center rounded-full bg-black shadow-md border border-gray-100 transition-colors",
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-grey-900 shadow-md border border-gray-100 transition-colors",
             { "opacity-0 pointer-events-none": isAtStart }
           )}
           aria-label="Scroll left"
         >
-          <ChevronLeft className="h-5 w-5 text-white" />
+          <ArrowLeft className="h-5 w-5 text-white" />
         </button>
       </div>
 
@@ -136,12 +112,12 @@ export default function CategoryNav({
         <button
           onClick={scrollRight}
           className={cn(
-            "flex h-10 w-10 group items-center justify-center rounded-full bg-black shadow-md border border-gray-100 transition-colors ",
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-grey-900 shadow-md border border-gray-100 transition-colors ",
             { "opacity-0 pointer-events-none": isAtEnd }
           )}
           aria-label="Scroll right"
         >
-          <ChevronRight className="h-5 w-5 text-white" />
+          <ArrowRight className="h-5 w-5 text-white" />
         </button>
       </div>
     </div>
