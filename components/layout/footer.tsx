@@ -244,7 +244,7 @@ export default function Footer() {
             {/* Our Mobile App */}
             <div>
               <h3 className="text-sm font-semibold mb-4">Our Mobile App</h3>
-              <div className="flex flex-row gap-4 mb-8">
+              <div className="flex flex-row mb-8">
                 <Link
                   href="https://apps.apple.com/app/cars-com/id353263726"
                   className="transition-transform mt-2"
