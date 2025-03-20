@@ -15,7 +15,7 @@ const YourGarage = () => {
                         Learn more
                     </Link>
                 </p>
-                <button className="p-4 mt-4 border border-secondary rounded-full px-7 font-semibold font-base hover:bg-gray-200 ">
+                <button className="p-3 mt-4 border border-grey-800 text-gray-800 rounded-full px-5 font-semibold font-base w-full md:w-fit hover:bg-gray-200">
                     Get started
                 </button>
                 <p>
@@ -32,6 +32,7 @@ const YourGarage = () => {
                     alt="Garage Image"
                     width={343}
                     height={264}
+                    style={{filter: "hue-rotate(310deg)"}}
                 />
             </div>
         </div>

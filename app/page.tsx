@@ -14,6 +14,7 @@ import WelcomeSection from "@/components/home/welcome-section";
 import { SearchForm } from "@/features/vehicle-search";
 import { VehicleType } from "@/types/vehicle";
 import YourGarage from "@/components/home/banners/your-gurage";
+import ResearchNewVehicles from "@/components/home/banners/research-new-vehicles";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -194,10 +195,12 @@ export default function Page() {
             </h2>
             <PopularVehicleShowcase category={selectedCategory} />
           </section>
+          {/* Banners */}
           <section>
             <YourGarage />
             <SellYourCar />
           </section>
+
           {/* 5. Trending Searches with improved visual appeal */}
           <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
@@ -212,6 +215,11 @@ export default function Page() {
                 <TrendingSearches />
               )}
             </div>
+          </section>
+
+          {/* Banners 2 */}
+          <section>
+          <ResearchNewVehicles />
           </section>
 
           {/* 6. Compare Section with enhanced visuals */}
