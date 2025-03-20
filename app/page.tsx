@@ -1,18 +1,19 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Container from "@/components/common-components/container";
 import CategoryNav from "@/components/home/category-nav";
 import CompareSection from "@/components/home/compare-section";
 import NewsSection from "@/components/home/news-section";
-import SellYourCar from "@/components/banners/sell-your-car";
+import SellYourCar from "@/components/home/banners/sell-your-car";
 import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
 import TrendingSearches from "@/components/home/trending-searchs";
 import WelcomeSection from "@/components/home/welcome-section";
 import { SearchForm } from "@/features/vehicle-search";
 import { VehicleType } from "@/types/vehicle";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import YourGarage from "@/components/home/banners/your-gurage";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -165,7 +166,7 @@ export default function Page() {
           </div>
         </section>
 
-        <main className="container mx-auto px-4 sm:px-6 md:px-8 py-8 mt-24 md:mt-28 lg:mt-32">
+        <main>
           {/* 2. Welcome Section with card-based design */}
           <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
             <WelcomeSection />
@@ -194,6 +195,7 @@ export default function Page() {
             <PopularVehicleShowcase category={selectedCategory} />
           </section>
           <section>
+            <YourGarage />
             <SellYourCar />
           </section>
           {/* 5. Trending Searches with improved visual appeal */}
