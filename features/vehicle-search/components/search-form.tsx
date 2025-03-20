@@ -78,7 +78,10 @@ export default function SearchForm({ className }: SearchFormProps) {
   }, []);
 
   return (
-    <div className={"w-full bg-[#f0f2f1]"} onClick={() => setIsFocused(true)}>
+    <div
+      className={"w-full min-h-[217px] bg-[#f0f2f1]"}
+      onClick={() => setIsFocused(true)}
+    >
       {/* Navigation Tabs - Enhanced with better visual hierarchy */}
       <div className="">
         <SearchNavigationBar
@@ -88,10 +91,10 @@ export default function SearchForm({ className }: SearchFormProps) {
       </div>
 
       {/* Main content with improved spacing and visual hierarchy */}
-      <div className="mx-auto p-4 sm:p-4">
-        <div className="h-[230px] overflow-y-auto custom-scrollbar px-1">
+      <div className="mx-auto  px-4">
+        <div className="overflow-y-auto custom-scrollbar">
           {formState.activeTab === "buy" ? (
-            <div className="space-y-4 py-1">
+            <div className="space-y-4 pt-4 pb-8">
               <CarsForSalesForm
                 searchParams={buyParams}
                 onParamsChange={updateBuyParams}
@@ -100,27 +103,11 @@ export default function SearchForm({ className }: SearchFormProps) {
             </div>
           ) : (
             <div className="space-y-4 py-1">
-              <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-gray-800 text-base">
-                  Sell your car in 3 easy steps
-                </h2>
-                <p className="text-xs text-gray-600 ml-auto">
-                  Get a competitive offer in minutes, not days
-                </p>
-              </div>
-
               <SellYourCarForm
                 sellParams={sellParams}
                 onParamsChange={updateSellParams}
                 onSubmit={handleSellSubmit}
               />
-
-              <div className="px-2 text-xs flex items-center bg-gray-50 p-2 rounded-md">
-                <Search className="h-3 w-3 text-indigo-500 mr-2" />
-                <span className="text-indigo-600 hover:text-indigo-800 hover:underline cursor-pointer font-medium transition-colors duration-200">
-                  Not sure about selling? Get a free valuation first
-                </span>
-              </div>
             </div>
           )}
         </div>

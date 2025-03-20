@@ -244,7 +244,7 @@ export default function Footer() {
             {/* Our Mobile App */}
             <div>
               <h3 className="text-sm font-semibold mb-4">Our Mobile App</h3>
-              <div className="flex flex-row gap-4 mb-8">
+              <div className="flex flex-row mb-8">
                 <Link
                   href="https://apps.apple.com/app/cars-com/id353263726"
                   className="transition-transform mt-2"
@@ -357,7 +357,7 @@ export default function Footer() {
         <div className="h-[1px] w-full bg-gray-200"></div>
         <Container>
           <div className="pt-8">
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
+            <div className="flex flex-col md:flex-row  gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
               <Link
                 href="/terms"
                 className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
@@ -389,9 +389,12 @@ export default function Footer() {
                   className="h-[14px] w-auto"
                 />
               </Link>
-              <button className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold">
+              <Link
+                href=""
+                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+              >
                 Cookie Preferences
-              </button>
+              </Link>
               <Link
                 href="/accessibility"
                 className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"

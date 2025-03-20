@@ -1,25 +1,10 @@
 "use client";
 
-import * as React from "react";
-import { ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import type { VehicleCategory } from "@/lib/data";
-
-// Categories as simple text
-const categories = [
-  { id: "Electric", name: "Electric" },
-  { id: "SUV", name: "SUV" },
-  { id: "Sedan", name: "Sedan" },
-  { id: "Pickup Truck", name: "Pickup Truck" },
-  { id: "Luxury", name: "Luxury" },
-  { id: "Crossover", name: "Crossover" },
-  { id: "Hybrid", name: "Hybrid" },
-  { id: "Diesel", name: "Diesel" },
-  { id: "Coupe", name: "Coupe" },
-  { id: "Hatchback", name: "Hatchback" },
-  { id: "Wagon", name: "Wagon" },
-  { id: "Convertible", name: "Convertible" },
-];
+import { cn } from "@/lib/utils";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useEffect } from "react";
+import { categories } from "./constants/category";
 
 interface CategoryNavProps {
   selectedCategory: VehicleCategory;
@@ -33,6 +18,8 @@ export default function CategoryNav({
   className,
 }: CategoryNavProps) {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const [isAtStart, setIsAtStart] = React.useState(true);
+  const [isAtEnd, setIsAtEnd] = React.useState(false);
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
@@ -43,11 +30,44 @@ export default function CategoryNav({
     }
   };
 
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      setIsAtStart(container.scrollLeft <= 0);
+      setIsAtEnd(
+        Math.ceil(container.scrollLeft + container.clientWidth) >=
+          container.scrollWidth
+      );
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
+
   return (
     <div className={cn("relative", className)}>
       <div
         ref={scrollContainerRef}
-        className="flex gap-3 overflow-x-auto py-2 scrollbar-hide"
+        className="flex gap-3 py-2 overflow-x-auto hide-scrollbar"
       >
         {categories.map((category) => (
           <button
@@ -56,8 +76,8 @@ export default function CategoryNav({
             className={cn(
               "px-6 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors",
               selectedCategory === category.id
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                ? "bg-grey-900 text-white"
+                : "bg-gray-100 text-gray-800 hover:bg-grey-900 hover:text-white"
             )}
           >
             {category.name}
@@ -65,14 +85,39 @@ export default function CategoryNav({
         ))}
       </div>
 
-      {/* Scroll button - only show on desktop when content overflows */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center">
+      <div
+        className={cn(
+          "absolute gradient-transparent-white-left pr-4 left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center",
+          { "md:hidden": isAtStart }
+        )}
+      >
+        <button
+          onClick={scrollLeft}
+          className={cn(
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-grey-900 shadow-md border border-gray-100 transition-colors",
+            { "opacity-0 pointer-events-none": isAtStart }
+          )}
+          aria-label="Scroll left"
+        >
+          <ArrowLeft className="h-5 w-5 text-white" />
+        </button>
+      </div>
+
+      <div
+        className={cn(
+          "absolute gradient-transparent-white-right pl-4 right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center",
+          { "md:hidden": isAtEnd }
+        )}
+      >
         <button
           onClick={scrollRight}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 border border-gray-100"
+          className={cn(
+            "flex h-10 w-10 group items-center justify-center rounded-full bg-grey-900 shadow-md border border-gray-100 transition-colors ",
+            { "opacity-0 pointer-events-none": isAtEnd }
+          )}
           aria-label="Scroll right"
         >
-          <ChevronRight className="h-5 w-5 text-gray-600" />
+          <ArrowRight className="h-5 w-5 text-white" />
         </button>
       </div>
     </div>

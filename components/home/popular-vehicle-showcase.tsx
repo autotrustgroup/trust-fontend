@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
 import { vehicleService } from "@/lib/data/api/vehicle-service";
 import { Vehicle, VehicleType } from "@/types/vehicle";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect, useState } from "react";
+import ProductCard from "../ui/ProductCard";
 
 interface VehicleShowcaseProps {
   category: VehicleType;
@@ -25,7 +24,7 @@ export default function PopularVehicleShowcase({
       setError(null);
       try {
         const results = await vehicleService.getVehiclesByCategory(category);
-        setVehicles(results.slice(0, 5)); // Get first 5 results
+        setVehicles(results.slice(0, 5));
       } catch (error) {
         console.error("Error fetching vehicles:", error);
         setError("Failed to load vehicles. Please try again later.");
@@ -39,20 +38,6 @@ export default function PopularVehicleShowcase({
 
   return (
     <section className="space-y-8">
-      {/* Section Header */}
-      <div>
-        <h2 className="text-2xl font-bold mb-2">All new {category}</h2>
-        <p className="text-gray-600 mb-4">
-          Experience the best way to search new {category.toLowerCase()}
-        </p>
-        <Link
-          href={`/shop/new-${category.toLowerCase()}`}
-          className="text-black font-medium hover:underline"
-        >
-          Shop new {category.toLowerCase()}
-        </Link>
-      </div>
-
       {/* Loading State */}
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -99,23 +84,11 @@ export default function PopularVehicleShowcase({
           {vehicles.length > 0 ? (
             vehicles.map((vehicle) => (
               <div key={vehicle.id} className="group">
-                <div className="aspect-[4/3] relative mb-4 bg-gray-100 rounded-lg overflow-hidden">
-                  <Image
-                    src={vehicle.image || "/placeholder.svg"}
-                    alt={vehicle.name}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="font-medium mb-2">{vehicle.name}</h3>
-                <Link
-                  href={vehicle.href}
-                  className="text-black hover:underline"
-                >
-                  {vehicle.isGuide
-                    ? `Watch ${category}101 Series Now`
-                    : "Shop now"}
-                </Link>
+                <ProductCard
+                  title={vehicle.name}
+                  imageUrl={vehicle.image}
+                  buttonText="Shop Now"
+                />
               </div>
             ))
           ) : (
@@ -129,7 +102,7 @@ export default function PopularVehicleShowcase({
       )}
 
       {/* Footer Links */}
-      {!isLoading && !error && (
+      {/* {!isLoading && !error && (
         <div className="flex gap-6 pt-4">
           <Link
             href={`/${category.toLowerCase()}`}
@@ -144,7 +117,7 @@ export default function PopularVehicleShowcase({
             Shop all cars
           </Link>
         </div>
-      )}
+      )} */}
     </section>
   );
 }

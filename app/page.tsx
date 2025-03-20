@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { SearchForm } from "@/features/vehicle-search";
-import WelcomeSection from "@/components/home/welcome-section";
+import Container from "@/components/common-components/container";
 import CategoryNav from "@/components/home/category-nav";
-import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
 import CompareSection from "@/components/home/compare-section";
 import NewsSection from "@/components/home/news-section";
-import Footer from "@/components/layout/footer";
-import { VehicleType } from "@/types/vehicle";
+import SellYourCar from "@/components/banners/sell-your-car";
+import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
 import TrendingSearches from "@/components/home/trending-searchs";
-import Container from "@/components/common-components/container";
+import WelcomeSection from "@/components/home/welcome-section";
+import { SearchForm } from "@/features/vehicle-search";
+import { VehicleType } from "@/types/vehicle";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -174,37 +174,28 @@ export default function Page() {
           {/* 3. Popular Categories with improved spacing */}
           <section className="mb-16 md:mb-20">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+              <h2 className="text-2xl md:text-3xl font-bold  bg-clip-text text-grey-900 text-h2 leading-tight">
                 Popular categories
               </h2>
-              <Link
-                href="/all-categories"
-                className="text-blue-600 hover:text-indigo-700 transition-colors duration-300 text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded-sm"
-                aria-label="View all vehicle categories"
-              >
-                View all categories
-              </Link>
             </div>
-            <div className="bg-white rounded-xl p-1 md:p-2 shadow-sm hover:shadow-md transition-all duration-300">
-              <CategoryNav
-                selectedCategory={toCategoryNavFormat(selectedCategory)}
-                onCategoryChange={handleCategoryChange}
-              />
-            </div>
+            <CategoryNav
+              selectedCategory={toCategoryNavFormat(selectedCategory)}
+              onCategoryChange={handleCategoryChange}
+            />
           </section>
 
           {/* 4. Vehicle Showcase with shadow effect */}
           <section className="mb-16 md:mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8  bg-clip-text text-grey-900 leading-tight">
               {selectedCategory.charAt(0).toUpperCase() +
                 selectedCategory.slice(1)}{" "}
               Vehicles
             </h2>
-            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 md:p-8 border border-gray-100">
-              <PopularVehicleShowcase category={selectedCategory} />
-            </div>
+            <PopularVehicleShowcase category={selectedCategory} />
           </section>
-
+          <section>
+            <SellYourCar />
+          </section>
           {/* 5. Trending Searches with improved visual appeal */}
           <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">

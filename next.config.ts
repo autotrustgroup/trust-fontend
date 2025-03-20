@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       "images.unsplash.com",
       "images.pexels.com",
       "play.google.com",
+      "www.cars.com",
     ],
   },
 };
