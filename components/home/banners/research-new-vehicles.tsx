@@ -1,4 +1,4 @@
-// import { FaCheck } from "react-icons/fa";
+import { Check } from 'lucide-react';
 import Image from "next/image";
 
 const ResearchNewVehicles = () => {
@@ -13,15 +13,15 @@ const ResearchNewVehicles = () => {
           </h2>
           <ul className="mt-4 text-sm">
             <li className="flex items-center gap-2">
-              {/* <FaCheck className="text-black" />  */}
+              <Check className='p-[2px]' /> 
               View latest models
             </li>
             <li className="flex items-center gap-2">
-              {/* <FaCheck className="text-black" /> */}
+              <Check className='p-[2px]' />
                Compare vehicles side-by-side
             </li>
             <li className="flex items-center gap-2">
-              {/* <FaCheck className="text-black" />  */}
+              <Check className='p-[2px]' /> 
               Discover award-winning cars
             </li>
           </ul>
