@@ -101,8 +101,8 @@ export default function Page() {
   }, []); // Empty dependency array means this runs once on mount
 
   return (
+    <div className="min-h-screen bg-white">
     <Container>
-      <div className="min-h-screen bg-white">
         {/* 1. Enhanced Hero Section */}
         <section className="relative">
           {/* Overlay with text */}
@@ -167,16 +167,15 @@ export default function Page() {
           </div>
         </section>
 
-        <main>
           {/* 2. Welcome Section with card-based design */}
-          <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
+          {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
             <WelcomeSection />
-          </section>
+          </section> */}
 
           {/* 3. Popular Categories with improved spacing */}
-          <section className="mb-1 md:mb-0.5">
+          <section className="my-1 md:my-0.5">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
-              <h2 className="font-bold text-grey-900 text-h2 leading-tight">
+            <h2 className="font-bold text-grey-900 text-h2 leading-tight">
                 Popular categories
               </h2>
             </div>
@@ -195,11 +194,12 @@ export default function Page() {
             <YourGarage />
             <SellYourCar />
           </section>
-
+      </Container>
           {/* 5. Trending Searches with improved visual appeal */}
-          <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
-              Trending searches
+          <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-100">
+          <Container>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-black">
+            Trending searches near you
             </h2>
             <div className="relative min-h-[150px]">
               {trendingSearchesError ? (
@@ -210,8 +210,9 @@ export default function Page() {
                 <TrendingSearches />
               )}
             </div>
+            </Container>
           </section>
-
+          <Container>
           {/* Banners 2 */}
           <section>
           <ResearchNewVehicles />
@@ -237,7 +238,7 @@ export default function Page() {
           </section>
 
           {/* 7. News Section with card-based design */}
-          <section className="mb-16 md:mb-20">
+          {/* <section className="mb-16 md:mb-20">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
                 Latest automotive news
@@ -251,10 +252,10 @@ export default function Page() {
               </Link>
             </div>
             <NewsSection />
-          </section>
+          </section> */}
 
           {/* Call to action section */}
-          <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
+          {/* <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
               Ready to find your perfect vehicle?
             </h2>
@@ -278,12 +279,8 @@ export default function Page() {
                 Find used vehicles
               </Link>
             </div>
-          </section>
-        </main>
-
-        {/* Enhanced Footer */}
-        {/* <Footer /> */}
-      </div>
+          </section> */}
     </Container>
+    </div>
   );
 }
