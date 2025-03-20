@@ -174,9 +174,9 @@ export default function Page() {
           </section>
 
           {/* 3. Popular Categories with improved spacing */}
-          <section className="mb-16 md:mb-20">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold  bg-clip-text text-grey-900 text-h2 leading-tight">
+          <section className="mb-1 md:mb-0.5">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
+              <h2 className="font-bold text-grey-900 text-h2 leading-tight">
                 Popular categories
               </h2>
             </div>
@@ -188,11 +188,6 @@ export default function Page() {
 
           {/* 4. Vehicle Showcase with shadow effect */}
           <section className="mb-16 md:mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8  bg-clip-text text-grey-900 leading-tight">
-              {selectedCategory.charAt(0).toUpperCase() +
-                selectedCategory.slice(1)}{" "}
-              Vehicles
-            </h2>
             <PopularVehicleShowcase category={selectedCategory} />
           </section>
           {/* Banners */}

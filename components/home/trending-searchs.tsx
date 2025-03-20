@@ -1,13 +1,13 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ChevronRight, Search } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { vehicleService } from "@/lib/data/api/vehicle-service";
 import { trendingSearchTerms } from "@/lib/data/mock/search-terms";
+import { cn } from "@/lib/utils";
 import { Vehicle } from "@/types/vehicle";
+import { ChevronRight, Search } from "lucide-react";
+import Link from "next/link";
+import * as React from "react";
+import TrendingSearchCard from "./cards/TrendingSearchCard";
 
 export default function TrendingSearches() {
   const [selectedSearch, setSelectedSearch] =
@@ -110,31 +110,14 @@ export default function TrendingSearches() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {vehicles.length > 0 ? (
               vehicles.map((vehicle) => (
-                <Link
-                  key={vehicle.id}
-                  href={`/vehicledetail/${vehicle.id}`}
-                  className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
-                >
-                  <div className="aspect-[4/3] relative bg-gray-100 overflow-hidden">
-                    <Image
-                      src={vehicle.image || "/placeholder.svg"}
-                      alt={vehicle.name}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
-                      {vehicle.name}
-                    </h3>
-                    <p className="text-lg font-bold text-indigo-700">
-                      ${vehicle.price.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {vehicle.mileage} mi.
-                    </p>
-                  </div>
-                </Link>
+                <div key={vehicle.id}>
+                  <TrendingSearchCard
+                    name={vehicle.name}
+                    image={vehicle.image}
+                    price={vehicle.price}
+                    mileage={vehicle.mileage}
+                  />
+                </div>
               ))
             ) : (
               <div className="col-span-full text-center py-12">
