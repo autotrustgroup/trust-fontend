@@ -6,7 +6,7 @@ interface InputProps extends React.ComponentProps<"input"> {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, label, value, id, ...props }, ref) => {
+  ({ className, type, label = "", value, id, ...props }, ref) => {
     const inputId = id || `input-${label.replace(/\s+/g, "-").toLowerCase()}`;
     return (
       <div className="relative w-full h-full">

@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
       "images.pexels.com",
       "play.google.com",
       "www.cars.com",
+      "platform.cstatic-images.com",
+      "images.cars.com",
     ],
   },
 };

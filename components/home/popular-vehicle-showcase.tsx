@@ -6,6 +6,7 @@ import { Vehicle, VehicleType } from "@/types/vehicle";
 import { useEffect, useState } from "react";
 import PopularVehicalCard from "./cards/PopularVehicalCard";
 import CategoryCard from "./cards/CategoryCard";
+import Link from "next/link";
 
 interface VehicleShowcaseProps {
   category: VehicleType;
@@ -24,7 +25,7 @@ export default function PopularVehicleShowcase({
       setError(null);
       try {
         const results = await vehicleService.getVehiclesByCategory(category);
-        setVehicles(results.slice(0, 5));
+        setVehicles(results.slice(0, 9));
       } catch (error) {
         console.error("Error fetching vehicles:", error);
         setError("Failed to load vehicles. Please try again later.");
@@ -104,22 +105,25 @@ export default function PopularVehicleShowcase({
       )}
 
       {/* Footer Links */}
-      {/* {!isLoading && !error && (
-        <div className="flex gap-6 pt-4">
+      {!isLoading && !error && (
+        <div className="flex items-center gap-4">
           <Link
             href={`/${category.toLowerCase()}`}
-            className="text-black font-medium hover:underline"
+            className="text-grey-900 font-bold text-bodylg underline hover:decoration-primary-600 hover:decoration-2 "
           >
             See more {category.toLowerCase()}
           </Link>
+
+          <span className="h-5 w-px bg-gray-300"></span>
+
           <Link
             href="/shop/all"
-            className="text-black font-medium hover:underline"
+            className="text-grey-900 text-bodylg font-bold underline hover:decoration-primary-600 hover:decoration-2"
           >
             Shop all cars
           </Link>
         </div>
-      )} */}
+      )}
     </section>
   );
 }

@@ -36,21 +36,21 @@ export function ImageGallery({ images }: ImageGalleryProps) {
         {/* Navigation Arrows */}
         <button
           onClick={previousImage}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-grey-900/50 hover:bg-grey-900/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextImage}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-grey-900/50 hover:bg-grey-900/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
           aria-label="Next image"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Image Counter */}
-        <div className="absolute bottom-4 right-4 px-3 py-1.5 text-sm text-white bg-black/70 rounded-full">
+        <div className="absolute bottom-4 right-4 px-3 py-1.5 text-sm text-white bg-grey-900/70 rounded-full">
           {currentImage + 1} / {images.length}
         </div>
 

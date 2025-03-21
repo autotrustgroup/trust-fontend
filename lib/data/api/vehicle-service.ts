@@ -1,12 +1,11 @@
 import { SearchParams, Vehicle, VehicleType } from "@/types/vehicle";
-import { mockVehicles, vehiclesByCategory } from "../mock/vehicles";
-import { trendingSearchTerms } from "../mock/search-terms";
 import { buildSearchQuery, filterVehicles, sortVehicles } from "../filters";
+import { trendingSearchTerms } from "../mock/search-terms";
 import {
   mockDetailedVehicles,
-  mockVehicleDetail,
   VehicleDetailData,
 } from "../mock/vehicle-detail";
+import { mockVehicles, vehiclesByCategory } from "../mock/vehicles";
 import { transformVehicleData } from "../services/vehicle-detail-service";
 
 // Simulate network delay for mock API calls
@@ -195,7 +194,7 @@ export const vehicleService = {
    */
   getVehiclesByCategory: async (
     category: VehicleType,
-    limit = 4
+    limit = 10
   ): Promise<Vehicle[]> => {
     await delay(200);
     return vehiclesByCategory[category].slice(0, limit);

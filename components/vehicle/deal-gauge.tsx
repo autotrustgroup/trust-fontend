@@ -65,7 +65,7 @@ export function DealGauge({
         {/* Price Range Line */}
         <div className="relative pt-20">
           {/* Base line */}
-          <div className="h-[1px] bg-black w-full" />
+          <div className="h-[1px] bg-grey-900 w-full" />
 
           {/* Gray market range bar */}
           <div className="absolute top-[19px] left-1/2 -translate-x-1/2 w-[60%] h-[3px] bg-gray-200 rounded-full" />

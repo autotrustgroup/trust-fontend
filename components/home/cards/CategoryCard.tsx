@@ -24,7 +24,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           <p className="text-gray-900 text-bodymd mb-4">{description}</p>
           <Link
             href={link}
-            className="text-gray-900 font-bold hover:underline hover:decoration-purple-600 hover:decoration-2"
+            className="text-gray-900 font-bold hover:underline hover:decoration-primary-600 hover:decoration-2"
           >
             {linkText}
           </Link>

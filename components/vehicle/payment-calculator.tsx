@@ -112,7 +112,7 @@ export function PaymentCalculator({
               className={cn(
                 "h-12 rounded-sm border text-[15px] font-medium transition-colors",
                 selectedTerm === term
-                  ? "bg-black text-white border-black"
+                  ? "bg-grey-900 text-white border-black"
                   : "bg-white text-black border-gray-200 hover:border-gray-300"
               )}
             >

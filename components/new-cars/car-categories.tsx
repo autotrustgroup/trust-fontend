@@ -436,7 +436,7 @@ export function CarCategories() {
               className={cn(
                 "px-4 py-2 rounded-full text-sm transition-colors",
                 activeCategory === category
-                  ? "bg-black text-white"
+                  ? "bg-grey-900 text-white"
                   : "bg-[#F3F3F3] text-black hover:bg-[#E5E5E5]"
               )}
             >

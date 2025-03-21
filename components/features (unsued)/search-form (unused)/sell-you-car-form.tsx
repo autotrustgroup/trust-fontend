@@ -148,7 +148,7 @@ const SellYourCarForm: React.FC<FuncProps> = ({ handleSubmit }: FuncProps) => {
         <div className="md:col-span-3">
           <button
             type="submit"
-            className="h-[45px] w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:translate-y-[-1px] active:translate-y-[1px] text-sm"
+            className="h-[45px] w-full bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:translate-y-[-1px] active:translate-y-[1px] text-sm"
             aria-label="Get car value estimate"
           >
             <DollarSign className="h-3.5 w-3.5" />

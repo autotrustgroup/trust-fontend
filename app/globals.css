@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --card-shadow: 4px 4px 11px 5px rgba(0,0,0,.08);
+  --header-shadow: 0 4px 16px 0 rgba(40, 40, 40, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -32,3 +38,4 @@
 .overlay-gradient {
   background: linear-gradient(0deg, rgba(20, 24, 23, 0.75) 45%, transparent);
 }
+

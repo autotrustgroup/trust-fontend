@@ -1,109 +1,53 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, ChevronRight, BarChart } from "lucide-react";
+import ComparisonCard from "./cards/ComparisonCard";
 
 export default function CompareSection() {
   const comparisons = [
     {
       id: 1,
       cars: ["2024 Tesla Model 3", "2024 BMW i4"],
-      image:
-        "https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=1000&auto=format&fit=crop",
+      image1:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/07827872-c533-4f5f-8931-3a911250aaf0/96548bd5-fb31-4570-b31a-517e2ebe5408.png",
+      image2:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/42b42641-78e5-49a1-80b7-240b76aa6a3f/7f362d35-6f24-4f70-9131-fc42754c35dd.png",
       category: "Electric Sedans",
       advantages: ["Performance", "Range", "Technology"],
+      link: "/comparison",
     },
     {
       id: 2,
       cars: ["2024 Honda Accord", "2024 Toyota Camry"],
-      image:
-        "https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?q=80&w=1000&auto=format&fit=crop",
+      image1:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/77aeca88-d0af-4824-bbfd-d84ce2538524/1af0ca3f-5236-47a5-a487-32b49ec94f27.png",
+      image2:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/bc5d4734-5bf0-4fda-acf3-265023f70310/a417d9ea-b2bf-40b1-80cc-24c0e84ea083.png",
       category: "Midsize Sedans",
       advantages: ["Reliability", "Fuel Economy", "Resale Value"],
+      link: "/comparison",
     },
     {
       id: 3,
       cars: ["2024 Ford F-150", "2024 Chevrolet Silverado"],
-      image:
-        "https://images.unsplash.com/photo-1583267746897-2cf415887172?q=80&w=1000&auto=format&fit=crop",
+      image1:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/3e412f81-b730-4772-9991-e0fdd827d017/c750a3d6-f4d4-429c-beed-497b7d27698f.png",
+      image2:
+        "https://platform.cstatic-images.com/medium/in/v2/stock_photos/1f42c568-5c91-4bda-8428-2b5952d5f621/cbacf211-ac55-498f-8fba-352f9af19096.png",
       category: "Full-Size Trucks",
       advantages: ["Towing Capacity", "Payload", "Off-Road Capability"],
+      link: "/comparison",
     },
   ];
 
   return (
-    <section className="my-16 bg-gradient-to-r from-blue-50 to-indigo-50 py-10 px-6 rounded-xl">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-            <BarChart className="mr-2 h-6 w-6 text-blue-600" />
-            Compare top rated vehicles
-          </h2>
-          <p className="text-gray-600 mt-1">
-            See how popular models stack up against each other
-          </p>
-        </div>
-        <Link
-          href="/comparisons"
-          className="text-blue-600 font-medium flex items-center mt-2 md:mt-0 hover:text-blue-800"
-        >
-          View all comparisons
-          <ChevronRight className="ml-1 h-4 w-4" />
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {comparisons.map((comparison) => (
-          <Card
-            key={comparison.id}
-            className="overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow"
-          >
-            <CardContent className="p-0">
-              <div className="relative h-48">
-                <Image
-                  src={comparison.image || "/placeholder.svg"}
-                  alt={`Compare ${comparison.cars.join(" vs ")}`}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <span className="text-white font-semibold block">
-                    {comparison.category}
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <div className="flex items-center mb-4">
-                  <div className="flex-1 text-gray-800 font-medium truncate">
-                    {comparison.cars[0]}
-                  </div>
-                  <ArrowRight className="h-4 w-4 mx-2 text-gray-400" />
-                  <div className="flex-1 text-gray-800 font-medium truncate text-right">
-                    {comparison.cars[1]}
-                  </div>
-                </div>
-                <div className="space-y-2 mb-4">
-                  <h4 className="text-sm font-medium text-gray-700">
-                    Key Comparison Points:
-                  </h4>
-                  <ul className="text-sm text-gray-600 pl-4 list-disc">
-                    {comparison.advantages.map((advantage, index) => (
-                      <li key={index}>{advantage}</li>
-                    ))}
-                  </ul>
-                </div>
-                <Link
-                  href={`/comparisons/${comparison.id}`}
-                  className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-md inline-flex items-center hover:bg-blue-700 transition-colors"
-                >
-                  Compare now
-                  <ChevronRight className="ml-1 h-3 w-3" />
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {comparisons.map((comparison) => (
+        <ComparisonCard
+          key={comparison.id}
+          cars={comparison.cars}
+          image1={comparison.image1}
+          image2={comparison.image2}
+          link={comparison.link}
+        />
+      ))}
+    </div>
   );
 }

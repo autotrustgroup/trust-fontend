@@ -4,7 +4,7 @@ import Link from "next/link";
 import Container from "../common-components/container";
 export default function Footer() {
   return (
-    <footer className="bg-white pt-12 pb-8">
+    <footer className="bg-white pt-12 pb-8 border-t-2 border-grey-200">
       <div className="">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -275,7 +275,7 @@ export default function Footer() {
                   href="https://www.tiktok.com/@carsdotcom"
                   className=" transition-transform "
                 >
-                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-grey-900 flex items-center justify-center overflow-hidden">
                     <svg
                       fill="white"
                       width="20px"
