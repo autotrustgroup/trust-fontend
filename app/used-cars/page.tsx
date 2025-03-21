@@ -1,31 +1,45 @@
-import { UsedCarsHero } from "@/components/used-cars/hero";
-import { PriceRangeSearch } from "@/components/used-cars/price-range-search";
-import { BuyingGuide } from "@/components/used-cars/buying-guides";
-import { CertifiedPreOwned } from "@/components/used-cars/certified-pre-owned";
-import { PriceRanges } from "@/components/used-cars/price-ranges";
-import { CarsByOwner } from "@/components/used-cars/cars-by-owner";
-import { FeaturedPartners } from "@/components/used-cars/featured-partners";
-import { CarMakes } from "@/components/used-cars/car-makes";
-import { VehicleStyles } from "@/components/used-cars/vehicle-styles";
-import { ShoppingTips } from "@/components/used-cars/shopping-tips";
-import { PopularUsedCars } from "@/components/used-cars/popular-used-cars";
+import Container from "@/components/common-components/container";
+import HeroSection from "@/components/common-components/HeroSection/heroSection";
+import SearchForm from "@/components/used-cars/search-form";
 
 export default function UsedCarsPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <UsedCarsHero />
-      <PriceRangeSearch />
-      <div className="container mx-auto px-4 py-8">
-        <BuyingGuide />
-        <CertifiedPreOwned />
-        <PriceRanges />
-        <CarsByOwner />
-        <FeaturedPartners />
-        <CarMakes />
-        <VehicleStyles />
-        <ShoppingTips />
-        <PopularUsedCars />
+    <Container>
+      <div className="pt-7">
+        {/* BreadCrumb */}
+        <div className="text-sm flex items-center mb-6">
+          <a
+            href="/"
+            className="underline hover:decoration-purple-600 hover:decoration-2"
+          >
+            Home
+          </a>
+          <span className="mx-2 text-[#a3aeac]">/</span>{" "}
+          <span>Cars for sale</span>
+        </div>
+
+        {/* Title */}
+        <div className="">
+          <h1 className="font-semibold text-[52px]">Cars For Sale</h1>
+        </div>
+
+        <section className="relative">
+          {/* Overlay with text */}
+          <HeroSection
+            backgroundImage={"/hero.png"}
+            heading={"Imagine the possibilities"}
+            sponsorLogo={"/nissanLogo.png"}
+            sponsorTextPrimary={"Buckle up for your next"}
+            sponsorTextSecondary={"adventure."}
+            sponsorTextTertiary={"The Nissan Now Sales Event"}
+          />
+
+          {/* Search Form */}
+          <div className="">
+            <SearchForm className="shadow-lg border border-gray-100" />
+          </div>
+        </section>
       </div>
-    </main>
+    </Container>
   );
 }

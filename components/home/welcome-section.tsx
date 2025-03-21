@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Heart, Eye, Car } from "lucide-react";
+import WelcomeCard from "./cards/WelcomeCard";
 
 // Mock data for recommended cars
 const recommendedCars = [
@@ -67,56 +68,7 @@ export default function WelcomeSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {recommendedCars.map((car) => (
-          <Card
-            key={car.id}
-            className="overflow-hidden border border-gray-200 transition-all hover:shadow-md"
-          >
-            <CardContent className="p-0 relative">
-              <div className="absolute top-2 right-2 z-10">
-                <button
-                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    car.saved
-                      ? "bg-red-500 text-white"
-                      : "bg-white/80 text-gray-600 hover:text-red-500"
-                  }`}
-                >
-                  <Heart
-                    className="h-4 w-4"
-                    fill={car.saved ? "currentColor" : "none"}
-                  />
-                </button>
-              </div>
-              <div className="relative">
-                <Image
-                  src={car.image || "/placeholder.svg"}
-                  alt={car.name}
-                  width={300}
-                  height={200}
-                  className="w-full h-48 object-cover transition-transform hover:scale-105"
-                />
-                <div className="absolute bottom-0 left-0 bg-blue-600 text-white text-xs font-semibold px-3 py-1">
-                  New arrival
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1">
-                  {car.name}
-                </h3>
-                <p className="text-blue-700 font-bold mb-3">{car.price}</p>
-                <div className="flex justify-between items-center">
-                  <Link
-                    href={`/car/${car.id}`}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-                  >
-                    View details
-                  </Link>
-                  <span className="text-xs text-gray-500">
-                    Added 2 days ago
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <WelcomeCard key={car.id} car={car} />
         ))}
       </div>
 

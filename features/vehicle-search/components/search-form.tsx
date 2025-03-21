@@ -2,12 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Search, MapPin, ChevronRight, Sparkles } from "lucide-react";
-import { cn } from "@/lib/utils";
-
 import { useSearchForm } from "../hooks/use-search-form";
 import { getTrendingSearches } from "../api/search-service";
-
 import SearchNavigationBar from "./search-navigation-bar";
 import CarsForSalesForm from "./cars-for-sales-form";
 import SellYourCarForm from "./sell-your-car-form";

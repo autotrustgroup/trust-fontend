@@ -6,7 +6,7 @@ interface OverlayImageProps {
   text?: string;
 }
 
-const OverlayImage: React.FC<OverlayImageProps> = ({ src, alt, text }) => {
+const OverlayImage = ({ src, alt, text }: OverlayImageProps) => {
   return (
     <div className="relative group">
       <Image

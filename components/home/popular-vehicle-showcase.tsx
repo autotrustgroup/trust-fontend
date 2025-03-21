@@ -4,7 +4,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { vehicleService } from "@/lib/data/api/vehicle-service";
 import { Vehicle, VehicleType } from "@/types/vehicle";
 import { useEffect, useState } from "react";
-import ProductCard from "../ui/ProductCard";
+import PopularVehicalCard from "./cards/PopularVehicalCard";
+import CategoryCard from "./cards/CategoryCard";
 
 interface VehicleShowcaseProps {
   category: VehicleType;
@@ -17,7 +18,6 @@ export default function PopularVehicleShowcase({
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchVehicles = async () => {
       setIsLoading(true);
@@ -81,14 +81,16 @@ export default function PopularVehicleShowcase({
       {/* Vehicle Grid */}
       {!isLoading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <CategoryCard
+            title={`All new ${category}`}
+            description="Experience the best way to search new cars"
+            link="/evs"
+            linkText="Shop new cars"
+          />
           {vehicles.length > 0 ? (
             vehicles.map((vehicle) => (
               <div key={vehicle.id} className="group">
-                <ProductCard
-                  title={vehicle.name}
-                  imageUrl={vehicle.image}
-                  buttonText="Shop Now"
-                />
+                <PopularVehicalCard vehicle={vehicle} />
               </div>
             ))
           ) : (

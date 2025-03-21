@@ -15,7 +15,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/financing"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Financing
                   </Link>
@@ -23,7 +23,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/find-a-car"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Find a Car
                   </Link>
@@ -31,7 +31,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/find-a-dealer"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Find a Dealer
                   </Link>
@@ -39,7 +39,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/listings-by-city"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Listings by City
                   </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/certified-pre-owned"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Certified Pre-Owned
                   </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/car-payment-calculators"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Car Payment Calculators
                   </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/car-reviews-and-ratings"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Car Reviews & Ratings
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/compare-side-by-side"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Compare Side by Side
                   </Link>
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/fraud-awareness"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Fraud Awareness
                   </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/sell-your-car"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Sell Your Car
                   </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://www.newcars.com"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     NewCars.com
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -110,7 +110,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://www.dealerrater.com"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     DealerRater
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -124,7 +124,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/platform-login"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Platform Log-In
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -133,7 +133,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/cars-commerce-overview"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Cars Commerce Overview
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -142,7 +142,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="https://www.cars.com"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Cars.com
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -151,7 +151,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/dealer-inspire"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Dealer Inspire
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -160,7 +160,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/accutrade"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     AccuTrade
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -169,7 +169,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/cars-commerce-media-network"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Cars Commerce Media Network
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -184,7 +184,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/about-cars-com"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     About Cars.com
                   </Link>
@@ -192,7 +192,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/contact-cars-com"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Contact Cars.com
                   </Link>
@@ -200,7 +200,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/investor-relations"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Investor Relations
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -209,7 +209,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/careers"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Careers
                   </Link>
@@ -217,7 +217,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/licensing-and-reprints"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 inline-flex items-center font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 inline-flex items-center font-semibold"
                   >
                     Licensing & Reprints
                     <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
@@ -226,7 +226,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/site-map"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Site Map
                   </Link>
@@ -234,7 +234,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/feedback"
-                    className="text-sm underline hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                    className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
                   >
                     Feedback
                   </Link>
@@ -357,28 +357,28 @@ export default function Footer() {
         <div className="h-[1px] w-full bg-gray-200"></div>
         <Container>
           <div className="pt-8">
-            <div className="flex flex-col md:flex-row  gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
+            <div className="flex flex-col xl:flex-row  gap-x-4 gap-y-2 text-[13px] text-gray-600 mb-4">
               <Link
                 href="/terms"
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 Terms & Conditions of Use
               </Link>
               <Link
                 href="/privacy"
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 Privacy Notice
               </Link>
               <Link
                 href="/california-privacy"
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 California Privacy Notice
               </Link>
               <Link
                 href="about/ccpa-privacy-notice"
-                className="flex gap-2 underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="flex gap-2 underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 My Privacy Choices
                 <Image
@@ -391,19 +391,19 @@ export default function Footer() {
               </Link>
               <Link
                 href=""
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 Cookie Preferences
               </Link>
               <Link
                 href="/accessibility"
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 Accessibility Statement
               </Link>
               <Link
                 href="/ad-choices"
-                className="underline text-sm hover:decoration-purple-600 hover:decoration-2 font-semibold"
+                className="underline text-sm hover:decoration-primary-600 hover:decoration-2 font-semibold"
               >
                 Ad Choices
               </Link>

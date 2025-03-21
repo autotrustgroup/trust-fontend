@@ -3,18 +3,17 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Search } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { vehicleService } from "@/lib/data/api/vehicle-service";
-import { trendingSearchTerms } from "@/lib/data/mock/search-terms";
+// import { trendingSearchTerms } from "@/lib/data/mock/search-terms";
 import { Vehicle } from "@/types/vehicle";
+import CategoryNav from "./category-nav";
+// import { VehicleCategory } from "@/lib/data";
 
 export default function TrendingSearches() {
   const [selectedSearch, setSelectedSearch] =
     React.useState<string>("Used Under $15K");
   const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Fetch vehicles when selected search changes
   React.useEffect(() => {
@@ -35,57 +34,18 @@ export default function TrendingSearches() {
     fetchVehicles();
   }, [selectedSearch]);
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 200,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <div className="w-full">
       {/* Search Categories */}
-      <div className="relative mb-8">
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mb-4"
-        >
-          {trendingSearchTerms.map((search) => (
-            <button
-              key={search}
-              onClick={() => setSelectedSearch(search)}
-              className={cn(
-                "h-10 px-5 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center",
-                selectedSearch === search
-                  ? "bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
-                  : "bg-white border border-gray-200 text-gray-800 hover:bg-gray-100"
-              )}
-            >
-              {selectedSearch === search && <Search className="w-4 h-4 mr-2" />}
-              {search}
-            </button>
-          ))}
-        </div>
-
-        {/* Scroll button */}
-        <div className="absolute right-0 top-0 hidden h-full md:flex items-center">
-          <button
-            onClick={scrollRight}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-gray-200 text-gray-700 shadow-sm hover:bg-gray-100"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
+      <div className="mb-2">
+      <CategoryNav selectedCategory={"Electric"} onCategoryChange={setSelectedSearch} />
       </div>
 
       {/* Results count */}
-      <p className="text-sm text-gray-600 mb-4">
+      {/* <p className="text-sm text-gray-600 mb-4">
         Showing {vehicles.length} {vehicles.length === 1 ? "result" : "results"}{" "}
         for "{selectedSearch}"
-      </p>
+      </p> */}
 
       {/* Loading state */}
       {isLoading ? (
@@ -93,7 +53,7 @@ export default function TrendingSearches() {
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-sm animate-pulse"
+              className="bg-white rounded-lg overflow-hidden group"
             >
               <div className="aspect-[4/3] bg-gray-200"></div>
               <div className="p-4">
@@ -113,7 +73,7 @@ export default function TrendingSearches() {
                 <Link
                   key={vehicle.id}
                   href={`/vehicledetail/${vehicle.id}`}
-                  className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                  className="group block bg-white rounded-lg overflow-hidden border border-gray-100"
                 >
                   <div className="aspect-[4/3] relative bg-gray-100 overflow-hidden">
                     <Image
@@ -124,10 +84,10 @@ export default function TrendingSearches() {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
+                    <h3 className="font-medium group-hover:underline group-hover:decoration-primary-500 group-hover:decoration-3  text-gray-900 mb-1 line-clamp-1">
                       {vehicle.name}
                     </h3>
-                    <p className="text-lg font-bold text-indigo-700">
+                    <p className="text-lg font-semibold text-gray-900">
                       ${vehicle.price.toLocaleString()}
                     </p>
                     <p className="text-sm text-gray-600">
@@ -150,10 +110,10 @@ export default function TrendingSearches() {
 
           {/* Footer Link */}
           {vehicles.length > 0 && (
-            <div className="mt-8 text-center">
+            <div className="mt-4">
               <Link
                 href={`/search?q=${encodeURIComponent(selectedSearch)}`}
-                className="inline-flex items-center justify-center h-12 px-6 font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-700 rounded-md hover:opacity-90 transition-opacity"
+                className="inline-flex underline items-center font-medium"
               >
                 See more {selectedSearch}
               </Link>

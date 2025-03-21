@@ -13,6 +13,7 @@ const SellYourCar = () => {
                             alt="Get an offer online"
                             width={72}
                             height={72}
+                            style={{filter: "hue-rotate(310deg)"}}
                         />
                         <p>
                             <strong>Get an offer online</strong> and quickly complete the transaction with a
@@ -33,6 +34,7 @@ const SellYourCar = () => {
                             alt="Get an offer online"
                             width={72}
                             height={72}
+                            style={{filter: "hue-rotate(310deg)"}}
                         />
                         <p className="text-base">
                             <strong>List your car for free.</strong> Set your own price and
@@ -54,6 +56,7 @@ const SellYourCar = () => {
                     width={330}
                     height={178}
                     className="object-contain"
+                    style={{filter: "hue-rotate(310deg)"}}
                 />
             </div>
         </div>

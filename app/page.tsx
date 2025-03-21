@@ -1,18 +1,21 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Container from "@/components/common-components/container";
 import CategoryNav from "@/components/home/category-nav";
 import CompareSection from "@/components/home/compare-section";
 import NewsSection from "@/components/home/news-section";
-import SellYourCar from "@/components/banners/sell-your-car";
+import SellYourCar from "@/components/home/banners/sell-your-car";
 import PopularVehicleShowcase from "@/components/home/popular-vehicle-showcase";
 import TrendingSearches from "@/components/home/trending-searchs";
 import WelcomeSection from "@/components/home/welcome-section";
 import { SearchForm } from "@/features/vehicle-search";
 import { VehicleType } from "@/types/vehicle";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import YourGarage from "@/components/home/banners/your-gurage";
+import ResearchNewVehicles from "@/components/home/banners/research-new-vehicles";
+import HeroSection from "@/components/common-components/HeroSection/heroSection";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -99,65 +102,19 @@ export default function Page() {
   }, []); // Empty dependency array means this runs once on mount
 
   return (
-    <Container>
-      <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
+      <Container>
         {/* 1. Enhanced Hero Section */}
         <section className="relative">
           {/* Overlay with text */}
-          <div
-            className="flex flex-col justify-between min-h-[330px] bg-black"
-            style={{
-              backgroundImage: "url('/hero.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <h1
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-white max-w-lg p-5"
-              style={{ lineHeight: "80px" }}
-            >
-              <span className="bg-[rgba(33,33,33,.75)] px-2">
-                Imagine the possibilities
-              </span>
-            </h1>
-
-            <div className="flex align-middle items-center text-lg md:text-xl text-white/90 bg-black max-w-[370px] px-3 py-2">
-              <Link href="/" className="flex-shrink-0">
-                <Image
-                  src="/nissanLogo.png"
-                  alt="Cars.com"
-                  width={115}
-                  height={45}
-                  className="h-[45px] w-[115px] object-contain"
-                />
-              </Link>
-              <div className="ml-4 text-xs">
-                <div className="inline">
-                  <span className="uppercase font-bold">Sponsored:</span> Buckle
-                  up for your next{" "}
-                  <span className="flex items-center align-middle gap-1">
-                    adventure.{" "}
-                    <svg
-                      width="10px"
-                      height="10px"
-                      viewBox="0 0 24 24"
-                      fill="white"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g id="Interface / External_Link">
-                        <path
-                          id="Vector"
-                          d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"
-                          stroke="white"
-                        />
-                      </g>
-                    </svg>
-                  </span>
-                </div>
-                <div className="">The Nissan Now Sales Event</div>
-              </div>
-            </div>
-          </div>
+          <HeroSection
+            backgroundImage={"/hero.png"}
+            heading={"Imagine the possibilities"}
+            sponsorLogo={"/nissanLogo.png"}
+            sponsorTextPrimary={"Buckle up for your next"}
+            sponsorTextSecondary={"adventure."}
+            sponsorTextTertiary={"The Nissan Now Sales Event"}
+          />
 
           {/* Search Form */}
           <div className="">
@@ -165,74 +122,78 @@ export default function Page() {
           </div>
         </section>
 
-        <main className="container mx-auto px-4 sm:px-6 md:px-8 py-8 mt-24 md:mt-28 lg:mt-32">
-          {/* 2. Welcome Section with card-based design */}
-          <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
+        {/* 2. Welcome Section with card-based design */}
+        {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
             <WelcomeSection />
-          </section>
+          </section> */}
 
-          {/* 3. Popular Categories with improved spacing */}
-          <section className="mb-16 md:mb-20">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold  bg-clip-text text-grey-900 text-h2 leading-tight">
-                Popular categories
-              </h2>
-            </div>
-            <CategoryNav
-              selectedCategory={toCategoryNavFormat(selectedCategory)}
-              onCategoryChange={handleCategoryChange}
-            />
-          </section>
-
-          {/* 4. Vehicle Showcase with shadow effect */}
-          <section className="mb-16 md:mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8  bg-clip-text text-grey-900 leading-tight">
-              {selectedCategory.charAt(0).toUpperCase() +
-                selectedCategory.slice(1)}{" "}
-              Vehicles
+        {/* 3. Popular Categories with improved spacing */}
+        <section className="my-6 md:my-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
+            <h2 className="font-bold text-grey-900 text-h2 leading-tight">
+              Popular categories
             </h2>
-            <PopularVehicleShowcase category={selectedCategory} />
-          </section>
-          <section>
-            <SellYourCar />
-          </section>
-          {/* 5. Trending Searches with improved visual appeal */}
-          <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
-              Trending searches
+          </div>
+          <CategoryNav
+            selectedCategory={toCategoryNavFormat(selectedCategory)}
+            onCategoryChange={handleCategoryChange}
+          />
+        </section>
+
+        {/* 4. Vehicle Showcase with shadow effect */}
+        <section className="mb-16 md:mb-20">
+          <PopularVehicleShowcase category={selectedCategory} />
+        </section>
+        {/* Banners */}
+        <section>
+          <YourGarage />
+          <SellYourCar />
+        </section>
+      </Container>
+      {/* 5. Trending Searches with improved visual appeal */}
+      <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-100">
+        <Container>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-black">
+            Trending searches near you
+          </h2>
+          <div className="relative min-h-[150px]">
+            {trendingSearchesError ? (
+              <TrendingSearchesFallback />
+            ) : isTrendingLoading ? (
+              <TrendingSearchesLoading />
+            ) : (
+              <TrendingSearches />
+            )}
+          </div>
+        </Container>
+      </section>
+      <Container>
+        {/* Banners 2 */}
+        <section>
+          <ResearchNewVehicles />
+        </section>
+
+        {/* 6. Compare Section with enhanced visuals */}
+        <section className="mb-16 md:mb-20">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
+              Compare vehicles
             </h2>
-            <div className="relative min-h-[150px]">
-              {trendingSearchesError ? (
-                <TrendingSearchesFallback />
-              ) : isTrendingLoading ? (
-                <TrendingSearchesLoading />
-              ) : (
-                <TrendingSearches />
-              )}
-            </div>
-          </section>
+            <Link
+              href="/compare"
+              className="text-blue-600 hover:text-indigo-700 transition-colors duration-300 text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded-sm"
+              aria-label="See all vehicle comparisons"
+            >
+              See all comparisons
+            </Link>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 md:p-8 border border-gray-100">
+            <CompareSection />
+          </div>
+        </section>
 
-          {/* 6. Compare Section with enhanced visuals */}
-          <section className="mb-16 md:mb-20">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
-                Compare vehicles
-              </h2>
-              <Link
-                href="/compare"
-                className="text-blue-600 hover:text-indigo-700 transition-colors duration-300 text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded-sm"
-                aria-label="See all vehicle comparisons"
-              >
-                See all comparisons
-              </Link>
-            </div>
-            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 md:p-8 border border-gray-100">
-              <CompareSection />
-            </div>
-          </section>
-
-          {/* 7. News Section with card-based design */}
-          <section className="mb-16 md:mb-20">
+        {/* 7. News Section with card-based design */}
+        {/* <section className="mb-16 md:mb-20">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
                 Latest automotive news
@@ -246,10 +207,10 @@ export default function Page() {
               </Link>
             </div>
             <NewsSection />
-          </section>
+          </section> */}
 
-          {/* Call to action section */}
-          <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
+        {/* Call to action section */}
+        {/* <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
               Ready to find your perfect vehicle?
             </h2>
@@ -273,12 +234,8 @@ export default function Page() {
                 Find used vehicles
               </Link>
             </div>
-          </section>
-        </main>
-
-        {/* Enhanced Footer */}
-        {/* <Footer /> */}
-      </div>
-    </Container>
+          </section> */}
+      </Container>
+    </div>
   );
 }
