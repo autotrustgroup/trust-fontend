@@ -129,27 +129,30 @@ export default function Page() {
         </section>
 
         {/* 2. Welcome Section with card-based design */}
-        {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-16 md:mb-20 shadow-sm transition-shadow duration-300 hover:shadow-md">
+        {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 lg:p-10 mb-20  shadow-sm transition-shadow duration-300 hover:shadow-md">
             <WelcomeSection />
           </section> */}
 
         {/* 3. Popular Categories with improved spacing */}
-        <section className="my-6 md:my-8">
+        <section className="my-6 md:my-8 ">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
             <h2 className="font-bold text-grey-900 text-h2 leading-tight">
               Popular categories
             </h2>
           </div>
-          <CategoryNav
-            selectedCategory={toCategoryNavFormat(selectedCategory)}
-            onCategoryChange={handleCategoryChange}
-          />
+          <div>
+            <CategoryNav
+              selectedCategory={toCategoryNavFormat(selectedCategory)}
+              onCategoryChange={handleCategoryChange}
+            />
+          </div>
+          <div>
+            <PopularVehicleShowcase category={selectedCategory} />
+          </div>
         </section>
 
         {/* 4. Vehicle Showcase with shadow effect */}
-        <section className="mb-16 md:mb-20">
-          <PopularVehicleShowcase category={selectedCategory} />
-        </section>
+        <section className="mb-20 "></section>
         {/* Banners */}
         <section>
           <YourGarage />
@@ -157,7 +160,7 @@ export default function Page() {
         </section>
       </Container>
       {/* 5. Trending Searches with improved visual appeal */}
-      <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-100">
+      <section className="mb-20  bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-100">
         <Container>
           <h2 className="text-h2 font-bold mb-2 text-black">
             Trending searches near you
@@ -180,7 +183,7 @@ export default function Page() {
         </section>
 
         {/* 6. Compare Section with enhanced visuals */}
-        <section className="mb-16 md:mb-20">
+        <section className="mb-20 ">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
             <h2 className="text-h2 font-bold leading-tight">
               Compare top rated vehicles
@@ -190,12 +193,12 @@ export default function Page() {
         </section>
 
         {/* 7. News Section with card-based design */}
-        <section className="mb-16 md:mb-20">
+        <section className="mb-20 ">
           <NewsSection />
         </section>
 
         {/* Call to action section */}
-        {/* <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
+        {/* <section className="mb-20  bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
               Ready to find your perfect vehicle?
             </h2>

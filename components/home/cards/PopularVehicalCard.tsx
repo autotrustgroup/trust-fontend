@@ -16,7 +16,7 @@ type PopularVehicleCardProps = {
 
 const PopularVehicleCard: React.FC<PopularVehicleCardProps> = ({ vehicle }) => {
   return (
-    <Card className="overflow-hidden border border-gray-200 transition-all hover:shadow-xl">
+    <Card className="overflow-hidden  transition-all hover:shadow-card">
       <CardContent className="p-0 relative">
         <div className="relative">
           <Image

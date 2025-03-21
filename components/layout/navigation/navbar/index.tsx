@@ -11,7 +11,6 @@ import { useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  console.log("pathname", pathname);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const openSignInModal = () => {
@@ -30,7 +29,7 @@ export default function Navbar() {
     { name: "Financing", link: "/finance" },
   ];
   return (
-    <header className="shadow-[0_.1px_11px_2px_rgba(68,89,88,0.11)]">
+    <header className="shadow-headershadow">
       <Container>
         <nav className="h-14 flex items-center justify-between">
           <div className="flex gap-16">
@@ -51,8 +50,10 @@ export default function Navbar() {
                 <Link
                   key={index}
                   href={items.link}
-                  className={`text-sm hover:underline text-nowrap ${
-                    pathname === items.link && "underline"
+                  className={`text-sm hover:underline text-nowrap transition-all ${
+                    pathname === items.link
+                      ? "underline text-underline-offset-2 transition-text-decoration duration-300"
+                      : ""
                   }`}
                 >
                   {items.name}
