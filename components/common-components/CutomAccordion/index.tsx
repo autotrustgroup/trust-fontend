@@ -9,11 +9,12 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { accordionData, Content, Faqs, Section } from "./types";
 
-export default function PopularSearch({ data }: any) {
+export default function CustomAccordion({ data }: accordionData) {
   return (
     <Accordion type="multiple" className="space-y-2 px-4">
-      {data.map((section: any) => (
+      {data.map((section) => (
         <AccordionItem key={section.title} value={section.title}>
           <AccordionTrigger className="text-sm font-semibold">
             {section.title}
@@ -25,9 +26,9 @@ export default function PopularSearch({ data }: any) {
   );
 }
 
-function renderSectionContent(section: any) {
+function renderSectionContent(section: Section) {
   if (Array.isArray(section.primary) && Array.isArray(section.additional)) {
-    return <Section section={section} />;
+    return <MoreContent section={section} />;
   }
 
   if (
@@ -36,11 +37,11 @@ function renderSectionContent(section: any) {
     typeof section.content[0] === "object" &&
     section.content[0].subTitle
   ) {
-    return renderSubHeaders(section.content);
+    return renderSubHeaders(section.content as Content[]);
   }
 
   if (Array.isArray(section.content)) {
-    return renderFlatList(section.content);
+    return renderFlatList(section.content as string[]);
   }
 
   if (Array.isArray(section.faqs)) {
@@ -50,7 +51,7 @@ function renderSectionContent(section: any) {
   return null;
 }
 
-function renderSubHeaders(subCategories: any[]) {
+function renderSubHeaders(subCategories: Content[]) {
   return (
     <div className="grid grid-cols-4 gap-6">
       {subCategories.map((subCat) => (
@@ -74,7 +75,6 @@ function renderSubHeaders(subCategories: any[]) {
   );
 }
 
-// For a flat list of strings
 function renderFlatList(items: string[]) {
   return (
     <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -91,37 +91,40 @@ function renderFlatList(items: string[]) {
   );
 }
 
-// **FAQ** rendering
-function renderFaqs(faqs: any[]) {
+function renderFaqs(faqs: Faqs[]) {
   return (
     <div>
       {faqs.map((faq, idx) => (
-        <div key={faq.question} className="grid grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-base font-semibold mb-1">{faq.question}</h3>
-            <p className="text-sm mb-2">{faq.answer}</p>
-          </div>
-
-          {faq.relatedArticles?.length > 0 && (
-            <div className="text-sm">
-              <p className="font-semibold">Related articles:</p>
-              <ul className="list-disc pl-5">
-                {faq.relatedArticles.map((article: any) => (
-                  <li key={article.label}>
-                    <Link
-                      href={article.href}
-                      className="underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
-                    >
-                      {article.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+        <div key={faq.question}>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">{faq.question}</h3>
+              <div
+                className="text-sm mb-2  "
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              />
             </div>
-          )}
 
+            {faq.relatedArticles && faq.relatedArticles?.length > 0 && (
+              <div className="text-sm">
+                <p className="font-semibold">Related articles:</p>
+                <ul className="list-disc pl-6 text-sm leading-5 marker:text-2xl marker:leading-[1]">
+                  {faq.relatedArticles.map((article) => (
+                    <li key={article.label} className="pt-4">
+                      <Link
+                        href={article.href}
+                        className="underline hover:decoration-primary-600 hover:decoration-2 font-bold"
+                      >
+                        {article.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
           {idx < faqs.length - 1 && (
-            <hr className="mt-4 mb-4 border-gray-200" />
+            <hr className="mt-6 mb-6 border-gray-200" />
           )}
         </div>
       ))}
@@ -129,22 +132,22 @@ function renderFaqs(faqs: any[]) {
   );
 }
 
-// For the "Used Cars by Price" toggle
-function Section({ section }: { section: any }) {
+function MoreContent({ section }: { section: Section }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div>
       <div className="flex flex-wrap gap-4 mb-2">
-        {section.primary.map((priceRange: any) => (
-          <Link
-            key={priceRange}
-            href="#"
-            className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
-          >
-            {priceRange}
-          </Link>
-        ))}
+        {section.primary &&
+          section.primary.map((item) => (
+            <Link
+              key={item}
+              href="#"
+              className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
+            >
+              {item}
+            </Link>
+          ))}
       </div>
 
       <button
@@ -159,15 +162,16 @@ function Section({ section }: { section: any }) {
 
       {showMore && (
         <div className="flex flex-wrap gap-4 mb-2">
-          {section.additional.map((priceRange: any) => (
-            <Link
-              key={priceRange}
-              href="#"
-              className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
-            >
-              {priceRange}
-            </Link>
-          ))}
+          {section?.additional &&
+            section.additional.map((item) => (
+              <Link
+                key={item}
+                href="#"
+                className="text-sm underline hover:decoration-primary-600 hover:decoration-2 font-semibold"
+              >
+                {item}
+              </Link>
+            ))}
         </div>
       )}
     </div>

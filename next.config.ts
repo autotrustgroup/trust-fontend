@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       "play.google.com",
       "www.cars.com",
       "platform.cstatic-images.com",
+      "images.cars.com",
     ],
   },
 };

@@ -201,7 +201,7 @@ export const faqs = [
       },
       {
         question: "When is the best time to buy a car",
-        answer: `Shoppers looking for the best deal on a new car are typically advised to wait until the end of the year when automakers offer their most generous incentives. Additionally, automakers usually offer deals around Memorial Day, 4th of July, Labor Day and Black Friday. However, the ongoing inventory shortage and supply chain issues have forced automakers to scale back on incentives in recent months.`,
+        answer: `<p>Shoppers looking for the best deal on a new car are typically advised to wait until the end of the year when automakers offer their most generous incentives. Additionally, automakers usually offer deals around <a  class="font-semibold underline hover:decoration-primary-600 hover:decoration-2" href="#" rel="noreferrer">Memorial Day</a>, <a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2" href="#" rel="noreferrer">4th of July</a>, <a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2" href="#" rel="noreferrer">Labor Day</a> and <a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2" href="#" rel="noreferrer">Black Friday</a>. However, the ongoing inventory shortage and supply chain issues have forced automakers to scale back on incentives in recent months.</p>`,
         relatedArticles: [
           {
             label: "What's the Best Time of Year to Buy a Car?",
@@ -264,7 +264,9 @@ export const faqs = [
       },
       {
         question: "Are loan rates higher for used cars?",
-        answer: `Yes, loan rates are higher overall for used versus new cars, but they may be better if the car is factory-certified pre-owned because manufacturers may offer attractive interest rates to promote CPO sales. Before financing with a dealer, bank, or credit union, check the national average interest rates for used cars at Bankrate.com.`,
+        answer: `<p>Yes, loan rates are higher overall for used versus new cars, but they may be better if the car is factory-certified pre-owned because manufacturers may offer attractive interest rates to promote CPO sales. Before financing with a dealer, bank, or credit union, check the national average interest rates for used cars at  <a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2"  href="#" rel="noreferrer">
+            Bankrate.com
+          </a>.</p>`,
         relatedArticles: [
           {
             label: "Report: Average payments for New, Used Cars Rise?",
@@ -274,7 +276,7 @@ export const faqs = [
       },
       {
         question: "How do I know if I can afford the payments?",
-        answer: `You can estimate your payments here using Cars.com's finance calculators. You should have a down payment of at least 20%; financing lasting no longer than four years; and a principal, interest and insurance total not exceeding 10% of your gross household income.`,
+        answer: `<p>You can estimate your payments here using <a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2" href="#" rel="noreferrer">Cars.com's finance calculators</a>. You should have a down payment of at least 20%; financing lasting no longer than four years; and a principal, interest and insurance total not exceeding 10% of your gross household income.</p>`,
         relatedArticles: [
           {
             label: "Can You Afford Your Car?",
@@ -283,5 +285,155 @@ export const faqs = [
         ],
       },
     ],
+  },
+  {
+    title: "Warranty",
+    faqs: [
+      {
+        question: "Are extended warranties worth the money?",
+        answer: `<p><a class="font-semibold underline hover:decoration-primary-600 hover:decoration-2"  href="#" rel="noreferrer">Extended warranties</a> offer peace of mind, but apart from the coverage included with factory-certified pre-owned cars, additional plans come with a price that studies have shown to be higher than the benefits you can claim in repairs.</p>`,
+        relatedArticles: [
+          {
+            label: "CPO Pros and Cons Versus Extended Warranty",
+            href: "/",
+          },
+        ],
+      },
+      {
+        question: "What warranty comes with a used car?",
+        answer: `Initial warranties are limited by the miles and age of a car, so if the car has higher miles, original warranties may no longer apply. Also note that warranties don't always transfer to subsequent buyers. Check the vehicle manufacturer's specifications for warranty limits.`,
+        relatedArticles: [
+          {
+            label: "Making Sense of Used-Car Warranties",
+            href: "/",
+          },
+        ],
+      },
+      {
+        question: "What is a bumper-to-bumper warranty and what does it cover?",
+        answer: `Often called a basic warranty or new-vehicle warranty, a bumper-to-bumper policy covers components such as air conditioning, audio systems, vehicle sensors, fuel systems, and major electrical components. Most policies exclude regular maintenance such as fluid top-offs and oil changes, but a growing number of brands have separate free-maintenance provisions. Bumper-to-bumper warranties typically expire faster than powertrain warranties. Terms are typically three years or 36,000 miles, although some have terms as high as six years or 60,000 miles. Check the vehicle manufacturer's specifications for bumper-to-bumper warranty limits.`,
+      },
+    ],
+  },
+  {
+    title: "Certified used cars",
+    faqs: [
+      {
+        question: "What does CPO mean?",
+        answer: `A certified pre-owned or CPO car has been inspected to meet minimum quality standards and typically includes some type of warranty. While dealers and third parties certify cars, the gold standard is an automaker-certified vehicle that provides a factory-backed warranty, often extending the original coverage. Vehicles must be in excellent condition and have low miles and wear to be certified, which is why off-lease vehicles feed many CPO programs.`,
+        relatedArticles: [
+          {
+            label: "Tips to Buying a CPO Car",
+            href: "/",
+          },
+          {
+            label: "Certified Pre-Owned",
+            href: "/",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const newsTips = [
+  {
+    title: "2024 Cars.com Affordability Report: Best Value New Cars",
+    description:
+      "We analyzed four vehicle categories with a focus on affordability and value. To select the best-value finalists in each category, we used a methodology that accounts for pricing and available features.",
+    link: "See the best value cars",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/202403-best-value-editorial-lead-2-scaled.jpg",
+  },
+  {
+    title: "What Are the Best Used Cars for $20,000?",
+    description:
+      "Cars.com has assembled a healthy list of late-model used cars available for a budget of about $20,000.",
+    link: "See the best used cars under $20k",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/best-cars-under-20K.jpg",
+  },
+  {
+    title: "What Are the Best Used Cars for $10,000?",
+    description:
+      "Cars.com scoured its current vehicle listings and found good vehicles in different types and sizes with median list prices of around $10,000.",
+    link: "See the best used cars under $10k",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/best-cars-under-10K.jpg",
+  },
+  {
+    title: "Here Are the 10 Cheapest New Cars You Can Buy Right Now",
+    description:
+      "The days of the sub-$10,000 new car are long behind us, but if a rock-bottom base price is what you’re looking for, there are still a variety of models to consider.",
+    link: "See the cheapest new cars",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/best-cars-under-15K.jpg",
+  },
+  {
+    title: "What Are the Best Used Cars for $15,000?",
+    description:
+      "To help your search, we poured over Cars.com’s listings to find a selection of solid vehicles for a $15,000 budget.",
+    link: "See the best used cars under $15k",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/best-cars-under-15K.jpg",
+  },
+  {
+    title: "Here Are the 10 Cheapest New SUVs You Can Buy Right Now",
+    description:
+      "Automakers have been rushing to fill their lineups with SUVs, and the relatively affordable subcompact SUV class has grown considerably as a result.",
+    link: "See the cheapest new SUVs",
+    image:
+      "https://images.cars.com/cldstatic/wp-content/uploads/best-cars-under-15K.jpg",
+  },
+];
+
+export const helpTopics = [
+  {
+    title: "Find dealerships near you",
+    description: "View and contact dealerships in your area.",
+    link: {
+      label: "Search nearby dealers",
+      href: "#",
+    },
+  },
+  {
+    title: "Calculating car loan payments",
+    description: "Estimate your monthly car payments.",
+    link: {
+      label: "Car loan calculator",
+      href: "#",
+    },
+  },
+  {
+    title: "Knowing if certified pre-owned is for you",
+    description: "CPO is a great option when buying used.",
+    link: {
+      label: "Shop & learn CPO",
+      href: "#",
+    },
+  },
+  {
+    title: "Researching models and reviews",
+    description: "Read specs and reviews, and compare.",
+    link: {
+      label: "Research & learn",
+      href: "#",
+    },
+  },
+  {
+    title: "On a tight budget?",
+    description: "Shop our list of affordable used cars near you.",
+    link: {
+      label: "Cheap cars for sale",
+      href: "#",
+    },
+  },
+  {
+    title: "Need to ship your car?",
+    description: "Secure shipping for your car purchase.",
+    link: {
+      label: "Ship a car",
+      href: "#",
+    },
   },
 ];

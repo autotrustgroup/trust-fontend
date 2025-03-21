@@ -22,7 +22,7 @@ export default function Navbar() {
     setIsSignInModalOpen(false);
   };
   const navigation = [
-    { name: "Cars for Sale", link: "/used-cars" },
+    { name: "Cars for Sale", link: "/shopping" },
     { name: "New Cars", link: "/new-cars" },
     { name: "Research & Reviews", link: "/research" },
     { name: "News & Videos", link: "/news" },

@@ -14,9 +14,15 @@ import { VehicleType } from "@/types/vehicle";
 import YourGarage from "@/components/home/banners/your-gurage";
 import ResearchNewVehicles from "@/components/home/banners/research-new-vehicles";
 import HeroSection from "@/components/common-components/HeroSection/heroSection";
-import PopularSearch from "./used-cars/popular-search";
-import { popularSearch } from "./used-cars/constant";
+import { popularSearch } from "@/components/home/constants/popular-search";
+import dynamic from "next/dynamic";
 
+const CustomAccordion = dynamic(
+  () => import("@/components/common-components/CutomAccordion"),
+  {
+    ssr: false,
+  }
+);
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
   <div className="p-4 bg-white rounded-lg shadow-sm">
@@ -222,7 +228,7 @@ export default function Page() {
               Popular searches
             </h2>
           </div>
-          <PopularSearch data={popularSearch} />
+          <CustomAccordion data={popularSearch} />
         </Container>
       </section>
     </div>
