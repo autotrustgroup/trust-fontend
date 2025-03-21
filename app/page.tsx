@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Container from "@/components/common-components/container";
 import CategoryNav from "@/components/home/category-nav";
@@ -16,6 +14,8 @@ import { VehicleType } from "@/types/vehicle";
 import YourGarage from "@/components/home/banners/your-gurage";
 import ResearchNewVehicles from "@/components/home/banners/research-new-vehicles";
 import HeroSection from "@/components/common-components/HeroSection/heroSection";
+import PopularSearch from "./used-cars/popular-search";
+import { popularSearch } from "./used-cars/constant";
 
 // Custom fallback components for TrendingSearches
 const TrendingSearchesFallback = () => (
@@ -215,6 +215,16 @@ export default function Page() {
             </div>
           </section> */}
       </Container>
+      <section className="md:py-16 bg-gray-50 border-gray-100 ">
+        <Container>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
+            <h2 className="font-bold text-grey-900 text-h2 leading-tight">
+              Popular searches
+            </h2>
+          </div>
+          <PopularSearch data={popularSearch} />
+        </Container>
+      </section>
     </div>
   );
 }

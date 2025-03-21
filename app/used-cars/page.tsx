@@ -1,9 +1,11 @@
+import Link from "next/link";
 import Container from "@/components/common-components/container";
 import HeroSection from "@/components/common-components/HeroSection/heroSection";
 import UsedCarCard from "@/components/home/cards/UsedCarCard";
 import { usedcarcategories } from "@/components/home/constants/usedcars";
 import SearchForm from "@/components/used-cars/search-form";
-import Link from "next/link";
+import PopularSearch from "./popular-search";
+import { popularSearch, faqs } from "./constant";
 
 export default function UsedCarsPage() {
   return (
@@ -55,6 +57,19 @@ export default function UsedCarsPage() {
               <UsedCarCard key={category.title} category={category} />
             ))}
           </div>
+        </section>
+        <section className="py-12">
+          <h2 className="text-[28px] leading-[36px] font-bold mb-8 ">
+            Popular searches
+          </h2>
+          <PopularSearch data={popularSearch} />
+        </section>
+
+        <section className="py-12">
+          <h2 className="text-[28px] leading-[36px] font-bold mb-8 ">
+            Used car buying, financing, and warranty FAQ
+          </h2>
+          <PopularSearch data={faqs} />
         </section>
       </div>
     </Container>
