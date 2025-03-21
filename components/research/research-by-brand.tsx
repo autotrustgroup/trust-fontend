@@ -54,7 +54,7 @@ export function ResearchByBrand() {
               />
 
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />
+              <div className="absolute inset-0 bg-grey-900/50 group-hover:bg-grey-900/40 transition-colors" />
 
               {/* Logo and Text */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">

@@ -20,7 +20,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <div
-      className="flex flex-col justify-between min-h-[330px] bg-black"
+      className="flex flex-col justify-between min-h-[330px] bg-grey-900"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundSize: "cover",
@@ -34,7 +34,7 @@ const HeroSection = ({
         <span className="bg-[rgba(33,33,33,.75)] px-2">{heading}</span>
       </h1>
 
-      <div className="flex align-middle items-center text-lg md:text-xl text-white/90 bg-black max-w-[370px] px-3 py-2">
+      <div className="flex align-middle items-center text-lg md:text-xl text-white/90 bg-grey-900 max-w-[370px] px-3 py-2">
         <Link href="/" className="flex-shrink-0">
           <Image
             src={`${sponsorLogo}`}

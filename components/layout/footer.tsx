@@ -275,7 +275,7 @@ export default function Footer() {
                   href="https://www.tiktok.com/@carsdotcom"
                   className=" transition-transform "
                 >
-                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-grey-900 flex items-center justify-center overflow-hidden">
                     <svg
                       fill="white"
                       width="20px"

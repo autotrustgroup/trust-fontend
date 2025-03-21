@@ -27,7 +27,7 @@ export function PrequalifiedSection() {
 
       <button
         type="button"
-        className="w-full h-12 bg-black hover:bg-black/90 text-white font-medium rounded-md transition-colors"
+        className="w-full h-12 bg-grey-900 hover:bg-grey-900/90 text-white font-medium rounded-md transition-colors"
       >
         Get prequalified
       </button>

@@ -158,7 +158,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
               <Button
                 type="submit"
-                className="w-full rounded-full bg-black text-white h-12 hover:bg-gray-800 transition-colors duration-200 shadow-sm hover:shadow-md font-medium"
+                className="w-full rounded-full bg-grey-900 text-white h-12 hover:bg-gray-800 transition-colors duration-200 shadow-sm hover:shadow-md font-medium"
                 disabled={isLoading}
               >
                 {isLoading ? (

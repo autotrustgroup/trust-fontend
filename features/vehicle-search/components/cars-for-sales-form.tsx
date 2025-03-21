@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronDownIcon } from "lucide-react";
-import { VehicleSearchParams } from "../types/search-params";
 import { Input } from "@/components/ui/input";
+import { ChevronDownIcon } from "lucide-react";
+import React from "react";
+import { VehicleSearchParams } from "../types/search-params";
 
 interface CarsForSalesFormProps {
   searchParams?: VehicleSearchParams;
@@ -19,7 +19,6 @@ const CarsForSalesForm: React.FC<CarsForSalesFormProps> = ({
   onParamsChange,
   onSubmit,
 }) => {
-  const [isFocused, setIsFocused] = useState(false);
   const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
@@ -140,7 +139,7 @@ const CarsForSalesForm: React.FC<CarsForSalesFormProps> = ({
         <div className="col-span-4 md:col-span-4">
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 border-gray-500 border border-t-0 border-l-0 font-semibold flex justify-center md:rounded-br-md rounded-b-lg md:rounded-bl-none"
+            className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 border-gray-500 border border-t-0 border-l-0 font-semibold flex justify-center md:rounded-br-md rounded-b-lg md:rounded-bl-none"
             aria-label="Search for vehicles"
           >
             Show matches

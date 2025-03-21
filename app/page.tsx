@@ -153,7 +153,7 @@ export default function Page() {
       {/* 5. Trending Searches with improved visual appeal */}
       <section className="mb-16 md:mb-20 bg-gray-50 rounded-xl p-6 md:p-8 border border-gray-100">
         <Container>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-black">
+          <h2 className="text-h2 font-bold mb-2 text-black">
             Trending searches near you
           </h2>
           <div className="relative min-h-[150px]">
@@ -176,38 +176,17 @@ export default function Page() {
         {/* 6. Compare Section with enhanced visuals */}
         <section className="mb-16 md:mb-20">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
-              Compare vehicles
+            <h2 className="text-h2 font-bold leading-tight">
+              Compare top rated vehicles
             </h2>
-            <Link
-              href="/compare"
-              className="text-blue-600 hover:text-indigo-700 transition-colors duration-300 text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded-sm"
-              aria-label="See all vehicle comparisons"
-            >
-              See all comparisons
-            </Link>
           </div>
-          <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 md:p-8 border border-gray-100">
-            <CompareSection />
-          </div>
+          <CompareSection />
         </section>
 
         {/* 7. News Section with card-based design */}
-        {/* <section className="mb-16 md:mb-20">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent leading-tight">
-                Latest automotive news
-              </h2>
-              <Link
-                href="/news"
-                className="text-blue-600 hover:text-indigo-700 transition-colors duration-300 text-sm font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded-sm"
-                aria-label="View all automotive news"
-              >
-                View all news
-              </Link>
-            </div>
-            <NewsSection />
-          </section> */}
+        <section className="mb-16 md:mb-20">
+          <NewsSection />
+        </section>
 
         {/* Call to action section */}
         {/* <section className="mb-16 md:mb-20 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 md:p-10 lg:p-12 text-white text-center shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01]">

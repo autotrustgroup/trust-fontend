@@ -47,7 +47,7 @@ export function CarListingCard({
         <button className="absolute top-2 right-2 px-3 py-1 bg-white hover:bg-gray-100 text-black text-sm font-medium rounded-full transition-colors shadow-md">
           Save
         </button>
-        <div className="absolute bottom-2 right-2 px-2 py-1 text-xs text-white bg-black/70 rounded">
+        <div className="absolute bottom-2 right-2 px-2 py-1 text-xs text-white bg-grey-900/70 rounded">
           {imageCount} / {imageCount}
         </div>
       </div>
@@ -115,7 +115,7 @@ export function CarListingCard({
           >
             View on dealer's site
           </Link>
-          <button className="px-6 py-2.5 bg-white text-black text-sm font-medium rounded transition-colors border border-black hover:bg-black hover:text-white">
+          <button className="px-6 py-2.5 bg-white text-black text-sm font-medium rounded transition-colors border border-black hover:bg-grey-900 hover:text-white">
             Check availability
           </button>
         </div>

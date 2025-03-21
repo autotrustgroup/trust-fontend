@@ -1,11 +1,11 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { vehicleService } from "@/lib/data/api/vehicle-service";
+import Link from "next/link";
+import * as React from "react";
 // import { trendingSearchTerms } from "@/lib/data/mock/search-terms";
 import { Vehicle } from "@/types/vehicle";
+import TrendingSearchCard from "./cards/TrendingSearchCard";
 import CategoryNav from "./category-nav";
 // import { VehicleCategory } from "@/lib/data";
 
@@ -38,7 +38,10 @@ export default function TrendingSearches() {
     <div className="w-full">
       {/* Search Categories */}
       <div className="mb-2">
-      <CategoryNav selectedCategory={"Electric"} onCategoryChange={setSelectedSearch} />
+        <CategoryNav
+          selectedCategory={"Electric"}
+          onCategoryChange={setSelectedSearch}
+        />
       </div>
 
       {/* Results count */}
@@ -67,39 +70,22 @@ export default function TrendingSearches() {
       ) : (
         <>
           {/* Vehicle Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
             {vehicles.length > 0 ? (
               vehicles.map((vehicle) => (
-                <Link
-                  key={vehicle.id}
-                  href={`/vehicledetail/${vehicle.id}`}
-                  className="group block bg-white rounded-lg overflow-hidden border border-gray-100"
-                >
-                  <div className="aspect-[4/3] relative bg-gray-100 overflow-hidden">
-                    <Image
-                      src={vehicle.image || "/placeholder.svg"}
-                      alt={vehicle.name}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-medium group-hover:underline group-hover:decoration-primary-500 group-hover:decoration-3  text-gray-900 mb-1 line-clamp-1">
-                      {vehicle.name}
-                    </h3>
-                    <p className="text-lg font-semibold text-gray-900">
-                      ${vehicle.price.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {vehicle.mileage} mi.
-                    </p>
-                  </div>
-                </Link>
+                <div key={vehicle.id}>
+                  <TrendingSearchCard
+                    name={vehicle.name}
+                    image={vehicle.image}
+                    price={vehicle.price}
+                    mileage={vehicle.mileage}
+                  />
+                </div>
               ))
             ) : (
               <div className="col-span-full text-center py-12">
                 <p className="text-gray-500">
-                  No vehicles found matching "{selectedSearch}"
+                  No vehicles found matching &quot;{selectedSearch}&quot;
                 </p>
                 <p className="text-sm text-gray-400 mt-2">
                   Try another search term

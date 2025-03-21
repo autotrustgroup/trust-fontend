@@ -65,7 +65,7 @@ export function HowItWorks() {
           <div className="space-y-4">
             <Button
               variant="outline"
-              className="h-12 px-6 border-black rounded-full hover:bg-black hover:text-white transition-colors group"
+              className="h-12 px-6 border-black rounded-full hover:bg-grey-900 hover:text-white transition-colors group"
             >
               Get prequalified
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />

@@ -25,7 +25,7 @@ const UsedCarCard: React.FC<{ category: CarCategory }> = ({ category }) => {
 
         <div className="p-4">
           <p className="text-sm text-gray-500 uppercase">{category.category}</p>
-          <h3 className="text-lg font-medium text-gray-900 group-hover:underline group-hover:decoration-purple-600 group-hover:decoration-2">
+          <h3 className="text-lg font-medium text-gray-900 group-hover:underline group-hover:decoration-primary-600 group-hover:decoration-2">
             {category.title}
           </h3>
         </div>

@@ -52,7 +52,7 @@ export function CarListingCard({
         >
           Save
         </button>
-        <div className="absolute bottom-2 right-2 px-2 py-1 text-xs text-white bg-black/70 rounded">
+        <div className="absolute bottom-2 right-2 px-2 py-1 text-xs text-white bg-grey-900/70 rounded">
           {imageCount} / {imageCount}
         </div>
       </Link>

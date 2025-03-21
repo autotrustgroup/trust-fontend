@@ -24,12 +24,12 @@ const TrendingSearchCard: React.FC<TrendingSearchCardProps> = ({
             alt={name}
             width={300}
             height={200}
-            className="w-full h-44 object-cover"
+            className="w-full h-36 object-cover"
           />
         </div>
 
         <div className="p-4 flex flex-col flex-grow">
-          <h3 className="font-bold mb-1  group-hover:underline group-hover:decoration-purple-600 group-hover:decoration-2">
+          <h3 className="font-bold mb-1  group-hover:underline group-hover:decoration-primary-600 group-hover:decoration-2">
             {name}
           </h3>
           <p className="text-grey-900 text-bodylg font-bold mb-1">{price}</p>

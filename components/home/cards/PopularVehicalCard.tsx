@@ -33,7 +33,7 @@ const PopularVehicleCard: React.FC<PopularVehicleCardProps> = ({ vehicle }) => {
           <div className="flex justify-between items-center">
             <Link
               href={`/vehicle/${vehicle.id}`}
-              className="text-gray-900 font-bold group-hover:underline group-hover:decoration-purple-600 group-hover:decoration-2"
+              className="text-gray-900 font-bold group-hover:underline group-hover:decoration-primary-600 group-hover:decoration-2"
             >
               Shop Now
             </Link>

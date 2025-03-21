@@ -78,7 +78,7 @@ const SellYourCarForm: React.FC<SellYourCarFormProps> = ({
             <div className="relative inline-flex w-full lg:w-[350px] ">
               <div
                 className={cn(
-                  "absolute top-0 bottom-0 left-0 w-1/2 bg-black rounded-full transition-all duration-300",
+                  "absolute top-0 bottom-0 left-0 w-1/2 bg-grey-900 rounded-full transition-all duration-300",
                   identifierType === "vin"
                     ? "translate-x-full"
                     : "translate-x-0"

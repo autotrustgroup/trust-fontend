@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       {buttonText && (
         <div className="px-6 py-4">
-          <button className="text-gray-900 font-bold group-hover:underline group-hover:decoration-purple-600 group-hover:decoration-2">
+          <button className="text-gray-900 font-bold group-hover:underline group-hover:decoration-primary-600 group-hover:decoration-2">
             {buttonText}
           </button>
         </div>
